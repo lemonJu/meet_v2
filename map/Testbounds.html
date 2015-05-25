@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";font-family:"微软雅黑";}
+		#allmap{width:100%;height:500px;}
+		p{margin-left:5px; font-size:14px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=X27PdG5hAQ5Fq3eGuNzZafTW"></script>
+	<title>地图单击事件</title>
+</head>
+<body>
+	<div id="allmap"></div>
+	<p>添加点击地图监听事件，点击地图后显示当前经纬度</p>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(106.593301, 29.516449), 13);
+	function showInfo(e){
+		alert(e.point.lng + ", " + e.point.lat);
+	}
+	map.addEventListener("click", showInfo);
+	var bounds=map.getBounds();
+	console.log("左下坐标"+bounds.getSouthWest().lng+" "+bounds.getSouthWest().lat);
+	console.log("右上坐标"+bounds.getNorthEast().lng+" "+bounds.getNorthEast().lat);
+
+</script>
