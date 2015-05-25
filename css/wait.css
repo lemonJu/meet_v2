@@ -1,0 +1,32 @@
+section {
+  background: url(../img/wait.png) no-repeat 0 0;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+}
+section .position {
+  position: absolute;
+  bottom: 18%;
+  width: 100%;
+  text-align: center;
+}
+section .position p {
+  margin: 0;
+  padding-bottom: 20px;
+  text-align: center;
+  color: #48495b;
+}
+section .position p span {
+  color: #ffffff;
+}
+section .position div {
+  border-radius: 5px;
+  color: #FFFFFF;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 auto;
+  width: 130px;
+  height: 30px;
+  border: 1px solid #FFFFFF;
+}
+

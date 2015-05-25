@@ -1,0 +1,12 @@
+.local,.photo{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	width: 40%;
+	border: 1px solid #9E84FF;
+	margin: 40px auto;
+	min-width:100px;
+	border-radius: 14px;
+	background-color: #9F7FFE;
+	color: #FFFFFF
+}

@@ -1,0 +1,250 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+  line-height: 100%;
+  color: #000;
+  background-color: #fff;
+  margin: 0;
+}
+a {
+  color: #474747;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:active {
+  color: #2e2e2e;
+}
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.content-padded {
+  margin: 5px;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+/* dont fix IE/Mac */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bar {
+  width: 100%;
+  z-index: 10;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.bar-header {
+  /*position: relative;*/
+  position: fixed;
+  height: 50px;		/* 样式有更改 */
+}
+.bar-header a,
+.bar-header span,
+.bar-header .title {
+  line-height: 50px;
+}
+.bar-footer {
+  height: 50px;		/* 样式有更改 */
+  position: fixed;
+  background-color: #F3F4F8;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.title {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2em;		/* 样式有更改 */
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 0.2em;	/* 样式有更改 */
+  text-align: center;
+  white-space: nowrap;
+}
+.title a {
+  color: inherit;
+}
+/*# sourceMappingURL=bases.css.map */
+
+
+/* 以上是公共css样式部分  ===== 结束 */
+
+
+/* chat css样式  -------------start */
+body{
+	background-color: #f3f4f8;
+}
+header{
+	background: #f3f4f8 url(../img/tongxin_header.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+header i{
+	position: absolute;
+	right: 5%;
+	color: #fff;
+}
+
+
+/* body css start */
+#body{
+	height: calc(100% - 100px);
+	width: 100%;
+	position: absolute;
+}
+
+
+#search_box{
+	height: 50px;
+line-height: 50px;
+padding: 0 5%;
+margin-top: 50px;
+}
+.input_box{
+	display: inline-block;
+width: 100%;
+height: 60%;
+border: 1px solid #d3d3d3;
+vertical-align: middle;
+border-radius: 5% / 50%;
+}
+.input_box label{
+float: left;
+width: 14%;
+height: 100%;
+padding: 5px 0 0 15px;
+}
+.input_box i{
+	float: left;
+	color: #8d9095;
+	cursor: pointer;
+}
+#searchFriend{
+	float: left;
+outline: 0 none;
+border: none;
+ background-color: #f2f4f7; 
+margin: 5px 0 0 0;
+width: 80%;
+text-indent: 4px;
+}
+
+
+
+/*  search box end */
+
+#friends_box{
+	/*border: 1px solid #ccc;
+overflow: auto;
+height: calc( 100% - 50px);*/
+border: 1px solid #ccc;
+overflow: auto;
+/* height: calc( 100% - 50px); */
+position: fixed;
+top: 100px;
+bottom: 50px;
+width: 100%;
+left: 0;
+/*border: 1px solid #ccc;
+overflow: auto;
+height: calc( 100% - 50px);
+position: absolute;
+top: 50px;
+bottom: 0px;
+width: 100%;
+left: 0;*/
+
+}
+
+
+/* body css end */
+
+
+
+/* footer 样式呈现  begin */
+footer{
+	border-top: 1px solid #967fff;
+	background-color: #F3F4F8;
+}
+.tool_box{
+	width: 100%;
+height: 100%;
+overflow: hidden;
+background-color: #F3F4F8;
+}
+.tool_bar{
+	display: inline-block;
+	padding-top: 5px;
+height: 100%;
+width: 24%;
+text-align: center;
+overflow: hidden;
+cursor: pointer;
+}
+.tool_one{
+	
+}
+.tool_two{
+	
+}
+.tool_three{
+	
+}
+.tool_four{
+	
+}
+.tool_img{
+	width: 40%;
+height: 60%;
+text-indent: -9999px;
+margin-left: 30%;
+}
+.img_one{
+	background: #f3f4f8 url(../img/tongxin_foot_chat.png) no-repeat;
+	background-size: 100% 100%;
+}
+.img_two{
+	background: #f3f4f8 url(../img/tongxin_foot_yao.png) no-repeat;
+	background-size: 100% 100%;
+}
+.img_three{
+	background: #f3f4f8 url(../img/tongxun_people.png) no-repeat;
+	background-size: 100% 100%;
+}
+.img_four{
+	background: #f3f4f8 url(../img/tongxun_yujian.png) no-repeat;
+	background-size: 100% 100%;
+}
+.tool_text{
+	width: 100%;
+text-align: center;
+color: #9b85f4;
+font-size: 1em;
+margin-top: 0.2em;
+}
+.tool_bar span{
+	float: left;
+}
+/*  footer 样式呈现  end */

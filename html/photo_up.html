@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<title></title>
+		<link rel="stylesheet" href="../css/layout.css" />
+		<link rel="stylesheet" href="../css/photo_up.css" />
+		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
+		<script src="../js/common.js"></script>
+		
+	</head>
+
+	<body>
+		<header class="bar-header">
+			<div class="back" onclick="back()"><i class="fa fa-chevron-left"></i>
+			</div>
+			<a>头像</a>
+		</header>
+		<section class="content">
+			<div class="local">本地上传</div>
+			<div class="photo">拍照</div>
+			<ul id="hh"></ul>
+		</section>
+		<footer class="bar-footer"></footer>
+	</body>
+	<script src="../js/jquery.js"></script>
+	<script>
+		var i = 1,
+			gentry = null,
+			w = null;
+		var hl = null,
+			le = null,
+			de = null,
+			ie = null;
+		var unv = true;
+		var files = [];
+		document.addEventListener("plusready", onPlusReady, false);
+
+		function onPlusReady() {
+			$('.photo').click(function() {
+				getImage();
+			})
+			$('.local').click(function() {
+				galleryImg();
+			})
+		}
+
+		function getImage() {
+				var cmr = plus.camera.getCamera();
+				cmr.captureImage(function(path) {
+					showpic()
+					plus.gallery.save(path);
+				}, function(e) {}, {
+					filename: "_doc/camera/",
+					index: 1
+				});
+			}
+			//1432373165018.jpg
+
+		function showpic() {
+			plus.io.resolveLocalFileSystemURL("_doc/", function(entry) {
+				entry.getDirectory("camera", {
+					create: true
+				}, function(dir) {
+					gentry = dir;
+					updateHistory();
+				}, function(e) {
+					console.log("Get directory \"camera\" failed: " + e.message);
+				});
+			}, function(e) {
+				console.log("Resolve \"_doc/\" failed: " + e.message);
+			});
+		}
+		function showgallery() {
+			plus.io.resolveLocalFileSystemURL("_doc/", function(entry) {
+				entry.getDirectory("gallery", {
+					create: true
+				}, function(dir) {
+					gentry = dir;
+					updateHistory();
+				}, function(e) {
+					console.log("Get directory \"gallery\" failed: " + e.message);
+				});
+			}, function(e) {
+				console.log("Resolve \"_doc/\" failed: " + e.message);
+			});
+		}
+		function updateHistory() {
+			if (!gentry) {
+				return;
+			}
+			var reader = gentry.createReader();
+			reader.readEntries(function(entries) {
+				var len = entries.length - 1;
+				if (entries[len].isFile) {
+					var name = entries[len].name;
+					var suffix = name.substr(name.lastIndexOf('.'));
+					var url = "";
+					if (suffix == ".mov" || suffix == ".3gp" || suffix == ".mp4" || suffix == ".avi") {
+						//if(unv){plus.runtime.openFile("_doc/camera/"+name);return;}
+						url = "camera_video.html";
+					} else {
+						url = "camera_image.html";
+					}
+					w = plus.webview.create(url, url, {
+						scrollIndicator: 'none',
+						scalable: false,
+						bounce: "all"
+					});
+					w.addEventListener("loaded", function() {
+						w.evalJS("loadMedia('" + entries[len].toLocalURL() + "')");
+					}, false);
+					w.addEventListener("close", function() {
+						w = null;
+					}, false);
+					w.show("pop-in");
+				}
+			}, function(e) {
+				console.log("失败：" + e.message);
+			});
+		}
+
+		function upload() {
+			if (files.length <= 0) {
+				plus.nativeUI.alert("没有添加上传文件！");
+				return;
+			}
+			var wt = plus.nativeUI.showWaiting();
+			var task = plus.uploader.createUpload(url, {
+					method: "POST"
+				},
+				function(t, status) { //上传完成
+					if (status == 200) {
+						plus.storage.setItem("uploader", t.responseText);
+						var w = plus.webview.create("uploader_ret.html", "uploader_ret.html", {
+							scrollIndicator: 'none',
+							scalable: false
+						});
+						w.addEventListener("loaded", function() {
+							wt.close();
+							w.show("slide-in-right", 300);
+						}, false);
+					} else {
+						outLine("上传失败：" + status);
+						wt.close();
+					}
+				}
+			);
+			task.addData("client", "HelloH5+");
+			task.addData("uid", getUid());
+			for (var i = 0; i < files.length; i++) {
+				var f = files[i];
+				task.addFile(f.path, {
+					key: f.name
+				});
+			}
+			task.start();
+		}
+
+		function galleryImg() {
+			plus.gallery.pick(function(path) {
+				if (0 != path.indexOf("file://")) {
+					path = "file://" + path;
+				}
+				showgallery()
+				plus.gallery.save(path);
+			}, function(e) {
+				console.log(e)
+			}, {
+				filename: '_doc/gallery/'
+			});
+		}
+	</script>
+
+</html>

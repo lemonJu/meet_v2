@@ -1,0 +1,247 @@
+.bar {
+  width: 100%;
+  z-index: 10;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.bar-header {
+  background: url(../img/headerbg.png) no-repeat 0 0 #f3f4f8;
+  background-size: 100% 100%;
+  position: relative;
+  height: 40px;
+}
+.bar-header a,
+.bar-header span,
+.bar-header .title {
+  color: #ffffff;
+  line-height: 40px;
+}
+.bar-footer {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.bar-footer a {
+  color: #ffffff;
+}
+.title {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+  text-align: center;
+  white-space: nowrap;
+}
+.title a {
+  color: inherit;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+  line-height: 100%;
+  color: #000;
+  background-color: #fff;
+  margin: 0;
+}
+a {
+  color: #474747;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:active {
+  color: #2e2e2e;
+}
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.content-padded {
+  margin: 5px;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+/* dont fix IE/Mac */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+body {
+  font-size: 125%;
+}
+header {
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1em;
+  line-height: 2em;
+}
+article {
+  padding-top: 2em;
+  position: absolute;
+  top: 2em;
+  bottom: 2em;
+  width: 100%;
+  background-color: #f3f4f8;
+}
+.pic_border {
+  margin: 0 auto;
+  height: 5.5em;
+  width: 5.5em;
+  border-radius: 50%;
+  border: 1px solid #9e84ff;
+  line-height: 5.5em;
+}
+.pic_content {
+  margin: 0.25em auto;
+  text-align: center;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #9e84ff;
+}
+.pic_content img{
+	border-radius: 50%;;
+}
+.pic_content img {
+  width: 5em;
+  height: 5em;
+}
+.intro {
+  width: 50%;
+  margin: 2em auto 4em;
+  text-align: center;
+  color: #656364;
+  font-size: 0.7em;
+}
+.regist {
+  overflow: hidden;
+  padding-right: 1.5em;
+}
+.regist div {
+  float: right;
+  font-size: 0.7em;
+  color: #656364;
+}
+.user_name {
+  background: url(../img/user_name.png) no-repeat 1em 0.7em;
+}
+.password {
+  background: url(../img/password.png) no-repeat 1em 0.7em;
+}
+.user_name,
+.password {
+  padding-left: 2em;
+  margin-bottom: 1em;
+  line-height: 2em;
+  height: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #fffefc;
+  width: 100%;
+}
+.user_name input,
+.password input {
+  height: 1.5em;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.info_input {
+  width: 100%;
+  position: absolute;
+  bottom: 0em;
+}
+.name,
+.user {
+  padding-left: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
+  width: 50%;
+  float: left;
+}
+.name input,
+.user input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 1.5em;
+}
+.pass,
+.e-mail,
+.tel,
+.pass_sure,
+.sex {
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
+  width: 100%;
+  padding-left: 2em;
+}
+.name input,
+.pass input,
+.e-mail input,
+.tel input,
+.pass_sure input,
+.user input,
+.sex input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 2em;
+}
+.user {
+  padding-left: 1em;
+}
+.name {
+  background: url(../img/name.png) no-repeat 1em 0.7em #ffffff;
+}
+.sex {
+  background: url(../img/sex.png) no-repeat 1em 0.7em #ffffff;
+}
+.e-mail {
+  background: url(../img/e-mail.png) no-repeat 1em 0.7em #ffffff;
+}
+.pass {
+  background: url(../img/pass.png) no-repeat 1em 0.7em #ffffff;
+}
+.pass_sure {
+  background: url(../img/pass.png) no-repeat 1em 0.7em #ffffff;
+}
+.tel {
+  margin-bottom: 4em;
+  background: url(../img/tel.png) no-repeat 1em 0.7em #ffffff;
+}
+footer {
+  cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+  color: #ffffff;
+  width: 100%;
+  line-height: 2em;
+  background-color: #9f7ffe;
+}

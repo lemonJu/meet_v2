@@ -1,0 +1,95 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+  line-height: 100%;
+  color: #000;
+  background-color: #fff;
+  margin: 0;
+}
+a {
+  color: #474747;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:active {
+  color: #2e2e2e;
+}
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.content-padded {
+  margin: 5px;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+/* dont fix IE/Mac */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bar {
+  width: 100%;
+  z-index: 10;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.bar-header {
+  /*position: relative;*/
+  position: fixed;
+  height: 50px;		/* 样式有更改 */
+top: 0;
+	left: 0;
+}
+.bar-header a,
+.bar-header span,
+.bar-header .title {
+  line-height: 50px;
+}
+.bar-footer {
+  height: 50px;		/* 样式有更改 */
+  position: fixed;
+  background-color: #F3F4F8;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.title {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1em;		/* 样式有更改 */
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+}
+.title a {
+  color: inherit;
+}
+/*# sourceMappingURL=bases.css.map */
+
+
+/* 以上是公共css样式部分  ===== 结束 */
+

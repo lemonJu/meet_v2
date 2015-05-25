@@ -1,0 +1,133 @@
+.pic_border {
+  margin: 30px auto 0;
+  height: 5.5em;
+  width: 5.5em;
+  border-radius: 50%;
+  border: 1px solid #9e84ff;
+  line-height: 5.5em;
+}
+.pic_content {
+	padding-top: 15px;
+  margin: 0.25em auto;
+  text-align: center;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #9e84ff;
+}
+.pic_content img {
+  width: 3em;
+  height: 3em;
+}
+.intro {
+  width: 50%;
+  margin: 2em auto 4em;
+  text-align: center;
+  color: #656364;
+  font-size: 0.7em;
+}
+.regist {
+  overflow: hidden;
+  padding-right: 1.5em;
+}
+.regist div {
+  float: right;
+  font-size: 0.7em;
+  color: #656364;
+}
+.user_name {
+  background: url(../img/user_name.png) no-repeat 1em center;
+}
+.password {
+  background: url(../img/password.png) no-repeat 1em center;
+}
+.user_name,
+.password {
+  padding-left: 2em;
+  margin-bottom: 1em;
+  line-height: 2em;
+  height: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #fffefc;
+  width: 100%;
+}
+.user_name input,
+.password input {
+  height: 1.5em;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.info_input {
+  width: 100%;
+  position: absolute;
+  bottom: 0em;
+}
+.name,
+.user {
+  padding-left: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
+  width: 100%;
+  float: left;
+}
+.name input,
+.user input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 1.5em;
+}
+.pass,
+.e-mail,
+.tel,
+.pass_sure,
+.sex {
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
+  width: 100%;
+  padding-left: 2em;
+}
+.name input,
+.pass input,
+.e-mail input,
+.tel input,
+.pass_sure input,
+.user input,
+.sex input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 2em;
+}
+.user {
+  padding-left: 1em;
+}
+.name {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.sex {
+  background: url(../img/sex.png) no-repeat 1em center #ffffff;
+}
+.e-mail {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.pass {
+  background: url(../img/pass.png) no-repeat 1em center #ffffff;
+}
+.pass_sure {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.tel {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+footer {
+  cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+  color: #ffffff;
+  width: 100%;
+  line-height: 2em;
+  background-color: #9f7ffe;
+}

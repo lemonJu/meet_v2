@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<link rel="stylesheet" href="../css/layout.css" />
+		<link rel="stylesheet" href="../css/regist.css" />
+		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
+		<script src="../js/common.js"></script>
+		<title>RIGIST</title>
+	</head>
+
+	<body>
+		<header class="bar-header">
+			<div class="back" onclick="back()"><i class="fa fa-chevron-left"></i></div>
+			<a>注册</a>
+		</header>
+		<article class="clearfix content" id="fix">
+			<div class="user_pic" id="user_pic">
+				<div class="pic_border">
+					<div class="pic_content">
+						<img src="../img/camera.png" onclick="clicked('photo_up.html')" class="camera"/>
+					</div>
+				</div>
+			</div>
+			<div class="info_input">
+				<div class="name_user clearfix">
+					<div class="name clearfix">
+						<input type="text" placeholder="昵称" class="nicknamei" />
+					</div>
+				</div>
+				<div class="sex">
+					<input type="text" placeholder="性别" class="genderi" />
+				</div>
+				<div class="e-mail">
+					<input type="text" placeholder="年龄" class="maili" />
+				</div>
+				<div class="pass">
+					<input type="password" placeholder="密码" class="pswi" />
+				</div>
+				<div class="pass_sure">
+					<input type="password" placeholder="生日" class="s_psw_i" />
+				</div>
+				<div class="tel">
+					<input placeholder="个人描述" class="pd"></input>
+				</div>
+			</div>
+		</article>
+		<footer class="bar-footer"><a class="logup">确认注册</a>
+		</footer>
+		<script src="../js/jquery.js"></script>
+		<script>
+			var fix = document.getElementById('fix');
+			var user_pic = document.getElementById('user_pic');
+			window.onresize = function() {
+				if (window.innerHeight < 400) {
+					user_pic.style.display = 'none';
+				} else {
+					user_pic.style.display = 'block';
+				}
+			}
+			document.addEventListener("plusready", function() {
+				var xhr = null;
+				$('.logup').click(function() {
+					xhrCreate();
+				})
+			}, false);
+
+			function xhrCreate() {
+				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val();
+				var url = "http://113.250.157.84:3000/logup";
+				xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						console.log(xhr.responseText)
+					}
+				}
+				xhr.open("POST", url);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+				xhr.send(data);
+			}
+		</script>
+	</body>
+
+</html>

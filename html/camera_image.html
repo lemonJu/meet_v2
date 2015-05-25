@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<title>Hello H5+</title>
+		<link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="../css/layout.css" />
+		<script src="../js/jquery.js"></script>
+		<style type="text/css" media="screen">
+			img {
+				vertical-align: middle;
+			}
+			.back,
+			.sure {
+				min-width: 70px;
+				margin: 0;
+				display: inline-block;
+				height: 30px;
+				background-color: gray;
+				border-radius: 10px;
+				border: 1px solid blueviolet;
+				color: #FFFFFF;
+				padding: 0 0.5em;
+				line-height: 30px;
+				bottom: 0;
+			}
+			.position {
+				height: 40px;
+				line-height: 40px;
+				width: 100%;
+				text-align: center;
+				padding: 0;
+				margin: 0;
+			}
+			.wrap{
+				overflow: hidden;
+				margin: 0 auto;
+				width: 5em;
+				height: 5em;
+				border-radius:50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="bar-header">
+			<a>相片</a>
+		</header>
+		<section class="content" id="content">
+			<div class='wrap'>
+				<img id="img" onclick="back();" onload="imgLoaded();" onerror="imgError();" />
+			</div>
+		</section>
+		<footer class="bar-footer">
+			<div class="position">
+				<a class="back">取消</a>
+				<a class="sure">确定</a>
+			</div>
+		</footer>
+	</body>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript">
+		var w = null;
+		 // H5 plus事件处理
+		function plusReady() {
+			w = plus.nativeUI.showWaiting();
+		}
+		if (window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener("plusready", plusReady, false);
+		}
+
+		function imgLoaded() {
+			w && (w.close(), w = null);
+//			var b = document.getElementById('content');
+//			var img = document.getElementById("img");
+//			var pb = b.clientHeight / b.clientWidth,
+//				pi = img.clientHeight / img.clientWidth;
+//			if (pb > pi) {
+//				img.style.width = "100%";
+//			} else {
+//				img.style.height = "100%";
+//			}
+//			b.style.lineHeight = b.clientHeight + "px";
+			var wid = $('.wrap').width();
+			var hei = $('.wrap').height();
+			$('#img').width(wid);
+			$('#img').height(hei)
+		}
+
+		function imgError() {
+			w && (w.close(), w = null);
+			document.getElementById("img").style.display = "none";
+			plus.nativeUI.alert("无效的图片资源", function() {
+				back();
+			});
+		}
+
+		function loadMedia(src) {
+			document.getElementById("img").src = src;
+		}
+		$('.back').click(function() {
+			back()
+		})
+	</script>
+
+</html>
