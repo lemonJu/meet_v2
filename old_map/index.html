@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>测试json数组</title>
+</head>
+
+<body>
+<img src="icon.png" height="100" width="95">
+
+<script type="text/javascript">
+    //把图片变小
+
+
+
+</script>
+    <script type="text/javascript">
+    sData = [{
+        "name": 'alpha',
+        "id": 1,
+        "lng": 106.593301,
+        "lat": 29.516449,
+        "iconResourse": 1
+    }, {
+        "name": 'beta',
+        "id": 2,
+        "lng": 106.617447 ,"lat": 29.514882 ,"iconResourse": 1
+    }, {
+        "name": 'gamma',
+        "id": 3,
+        "lng": 106.631802,
+        "lat": 29.517454,
+        "iconResourse": 1
+    }, {
+        "name": 'delta',
+        "id": 4,
+        "lng": 106.613423,
+        "lat": 29.449349,
+        "iconResourse": 1
+    }, {
+        "name": 'xpc',
+        "id": 5,
+        "lng": 106.634695,
+        "lat": 29.495325,
+        "iconResourse": 1
+    }, ]
+
+    function Do(sData) {
+        for (var i = 0; i < sData.length; i++) {
+            console.log(sData[i].name);
+
+        }
+
+    }
+    Do(sData);
+    </script>
+</body>
+
+</html>

@@ -3,25 +3,50 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<link rel="stylesheet" type="text/css" href="../css/fontawesome/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="../css/public.css"/>
 		<link rel="stylesheet" href="../css/shake.css"/>
+		<style>
+		
+		.left_back{
+	height: 100%;
+	width: 60px;
+	position: relative;
+	z-index: 10;
+	float: left;
+}
+.left_back i{
+	font-size: 2em;
+	font-weight: 700;
+	margin-left: 5px;
+	line-height: 50px;
+}</style>
 		<title>shake</title>
 		<script src="../js/common.js"></script>
 	</head>
 	<body>
 		<header class="bar bar-header">
-        	<h1 class="title">摇一摇</h1>
+			<h1 class="title">摇一摇</h1>
+			<div class="left_back" onclick="back()">
+				<i class="fa fa-angle-left" onclick="back()"></i>
+			</div>
+        	
     	</header>
-    	
+    	 
     	<div class="shake_box">
     		<div class="shake_up"></div>
     		<div class="inner_text">
-    			谢鹏程
+    			正在搜索结果...
     		</div>
     		<div class="shake_down"></div>
     	</div>
     	
     	<script src="../js/jquery.js"></script>
 		<script src="../js/shake.js"></script>
+		<script type="text/javascript">
+			$(".turn_back").click(function(){
+				back();
+			})
+		</script>
 	</body>
 </html>

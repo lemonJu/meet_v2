@@ -25,6 +25,8 @@
 				background-size: 100% 100%;
 			}
 			header i {
+				position: absolute;
+				right: 5%;
 				color: #fff;
 			}
 			.left_back {
@@ -41,22 +43,15 @@
 				float: left;
 				line-height: 50px;
 			}
-			
-			.left_back{
-	height: 100%;
-	width: 60px;
-	position: relative;
-	z-index: 10;
-	float: left;
-	text-align: left;
-}
-.left_back i{
-	text-align: left;
-	font-size: 2em;
-	font-weight: 700;
-	margin-left: 5px;
-	line-height: 50px;
-}
+			.bar-header .fa-angle-left,
+			.bar-header .fa-user {
+				font-size: 1.4em;
+			}
+			.left_back i {
+				padding: 0 0.4em 0 0.1em;
+				float: left;
+				line-height: 50px;
+			}
 		</style>
 		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
 
@@ -65,14 +60,15 @@
 
 		<script src="../js/common.js"></script>
 		<script src="http://api.map.baidu.com/api?v=2.0&ak=X27PdG5hAQ5Fq3eGuNzZafTW"></script>
-		<title>寻找附近的朋友</title>
+		<title>浏览器定位</title>
 	</head>
 
 	<body>
 		<header class="bar bar-header">
 			<h1 class="title">地图搜索</h1>
-			<div class="left_back" onclick="back()">
-				<i class="fa fa-angle-left" onclick="back()"></i>
+			<div class="left_back">
+				<i class="fa fa-angle-left"></i>
+				<span class="message" onclick="back()">消息</span>
 			</div>
 		</header>
 
@@ -81,9 +77,7 @@
 		<script type="text/javascript">
 			document.addEventListener("plusready", init, false);
 			var maps = new BMap.Map("allmap");
-			maps.disableDragging();
-			maps.disableDoubleClickZoom();
-			maps.disablePinchToZoom();
+
 			function init() { 
 					var geolocation = new BMap.Geolocation();
 					geolocation.getCurrentPosition(function(r) {
@@ -103,10 +97,7 @@
 								lat2 = bounds.getNorthEast().lat,
 								lng2 = bounds.getNorthEast().lng;
 								ajax(REMOTEURL + "/getUserByCoords?lat1=" + lat1 + "&lat2=" + lat2 + "&lng1=" + lng1 + "&lng2=" + lng2, null, function(sData) {
-								
-									if(sData.length>7){
-										sData.length=7;
-									}
+									console.log("test !! test");
 									iconfactory(JSON.parse(sData));
 								}, null)
 								/*var myself = {
@@ -130,22 +121,22 @@
 				//把代码放在一起试试
 			var mp = maps;
 			console.log("mapcontrol.js enter");
-		//	mp.enableScrollWheelZoom();
+			mp.enableScrollWheelZoom();
 			 // 复杂的自定义覆盖物
 			function ComplexCustomOverlay(point, name, resourse) {
 				this._point = point;
-				this._name = name;			
+				this._name = name;
+				
 				this._resourse = resourse;
 			}
 			ComplexCustomOverlay.prototype = new BMap.Overlay();
 			ComplexCustomOverlay.prototype.initialize = function(map) {
 				this._map = map;
-				var randomsize=RandomNum(40,50);
 				var div = this._div = document.createElement("div");
 				div.style.position = "absolute";
 				div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
-				div.style.height = (randomsize+15)+"px";
-				div.style.width = (randomsize+15)+"px";
+				div.style.height = "70px";
+				div.style.width = "75px";
 				div.style.MozUserSelect = "none";
 				div.style.textAlign = "center";
 				var span = this._span = document.createElement("span");
@@ -153,27 +144,23 @@
 				span.appendChild(document.createTextNode(this._name));
 				var that = this;
 				var arrow = this._arrow = document.createElement("img");
-			
+				//arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
 				arrow.style.position = "absolute";
 				console.log(this._resourse);
-				//图片路径
 				arrow.src = "./" + this._resourse + ".png"; //this.resourse
-				
-				arrow.width = randomsize;
-				arrow.height = randomsize;
+				arrow.width = 50;
+				arrow.height = 50;
 				arrow.style.bottom = "0px";
 				arrow.style.left = "12.5px";
 				arrow.style.borderRadius = "50%";
 				div.appendChild(arrow);
 				var _nid = this._name;
 				div.addEventListener("click", function() {
-					
-					//console.log("this._nid =" + _nid);
+					alert(_nid);
+					console.log("this._nid =" + _nid);
 					item.set('MAPUSER', _nid);
 					clicked("../html/li_addfriend.html");
-		
-					//console.log("arrow.width = "+arrow.width+" arrow.height = "+arrow.height);
-					
+			
 				});
 				mp.getPanes().labelPane.appendChild(div);
 				return div;
@@ -184,31 +171,25 @@
 					this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
 					this._div.style.top = pixel.y - 30 + "px";
 				}
-				
+				/*var txt = "岸城",
+				mouseoverTxt = txt + " " + parseInt(Math.random() * 1000, 10) + "套";*/
+				/*var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(106.61169, 29.536999), "alpha","2","icon");
+
+				mp.addOverlay(myCompOverlay);*/
 				//创建对象
 
 			function iconfactory(sData) {
 					var myCompOverlay = null;
-		
+					console.log(sData)
 					// console.log("进入调试iconfactory");
-		
+					console.log("hdemo1");
 					for (var i = 0; i < sData.length; i++) {
 						sData[i].iconResourse = "demo";
-						//sData[i].user="张秀华";
 						console.log("sData = " + sData[i].user);
 						myCompOverlay = new ComplexCustomOverlay(new BMap.Point(sData[i].lng, sData[i].lat), sData[i].user,  sData[i].iconResourse);
 						mp.addOverlay(myCompOverlay);
 					}
 				}
-			//获取定范围的随机数
-			function RandomNum(Min,Max){
-				var Range = Max - Min;
-				var Rand = Math.random();   
-				var num = Min + Math.round(Rand * Range);
-				return num;
-				
-			}
-				
 				//end
 		</script>
 

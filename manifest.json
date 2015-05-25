@@ -1,14 +1,14 @@
 ﻿{
-	"@platforms": ["android", "iPhone", "iPad"],
+	"@platforms": ["android"],
 	"id": "H5F1DCAAE",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "MEET",/*应用名称，程序桌面图标名称*/
+	"name": "__",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0",/*应用版本名称*/
 		"code": ""
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
-		"72": "icon.png"
+		"72": "img/logo.png"
 	},
 	"launch_path": "html/wait.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
@@ -119,7 +119,7 @@
 				"mobileprovision": "",/*iOS应用打包配置文件*/
 				"password": "",/*iOS应用打包个人证书导入密码*/
 				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
-				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"devices": "",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
 				"frameworks": []
 			},
 			"google": {
@@ -133,67 +133,68 @@
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
-					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"auto": "C:\\Users\\Administrator\\Desktop\\logo.png", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
-						"normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
-						"retina": "", /*iPhone4程序图标，分辨率：114x114*/
-						"retina7": "", /*iPhone4S/5/6程序图标，分辨率：120x120*/
-						"retina8": "", /*iPhone6 Plus程序图标，分辨率：180x180*/
-						"spotlight-normal": "", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
-						"spotlight-retina": "", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "", /*iPhone4设置页面程序图标，分辨率：29x29*/
-						"settings-retina": "", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
-						"settings-retina8": ""
+						"normal": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
+						"retina": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\114.png", /*iPhone4程序图标，分辨率：114x114*/
+						"retina7": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
+						"retina8": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\180.png", /*iPhone6 Plus程序图标，分辨率：180x180*/
+						"spotlight-normal": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "C:\\Users\\Administrator\\Desktop\\logo58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "C:\\Users\\Administrator\\Desktop\\logo80.png", /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "C:\\Users\\Administrator\\Desktop\\logo58.png", /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+						"settings-retina8": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\87.png"
 					},
 					"ipad": {
-						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
-						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
-						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
-						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"normal": "C:\\Users\\Administrator\\Desktop\\logo72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						/*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "C:\\Users\\Administrator\\Desktop\\logo72.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "C:\\Users\\Administrator\\Desktop\\logo.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "C:\\Users\\Administrator\\Desktop\\logo48.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "C:\\Users\\Administrator\\Desktop\\logo96.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "C:\\Users\\Administrator\\Desktop\\logo48.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "C:\\Users\\Administrator\\Desktop\\logo80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "C:\\Users\\Administrator\\Desktop\\logo.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "C:\\Users\\Administrator\\Desktop\\logo58.png",
+						"retina": "C:\\Users\\Administrator\\Desktop\\logo96.png"
 					}
 				},
 				"android": {
-					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "", /*大屏程序图标，分辨率：48x48*/
-					"hdpi": "", /*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": ""
+					"mdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\icon\\144.png"
 				}
 			},
 			"splashscreen": {
 				"ios": {
 					"iphone": {
-						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
-						"retina47": "",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
-						"retina55": "",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
-						"retina55l": ""
+						"default": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\320_480.png", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\640_960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\640_1136.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						"retina47": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\750_1334.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						"retina55": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\1242_2208.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+						"retina55l": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\2208_1242.png"
 					},
 					"ipad": {
-						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": ""
+						"portrait": "C:\\Users\\Administrator\\Desktop\\face.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "C:\\Users\\Administrator\\Desktop\\face.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "C:\\Users\\Administrator\\Desktop\\face.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "C:\\Users\\Administrator\\Desktop\\face.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "C:\\Users\\Administrator\\Desktop\\face.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "C:\\Users\\Administrator\\Desktop\\face.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "C:\\Users\\Administrator\\Desktop\\face.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "C:\\Users\\Administrator\\Desktop\\face.png"
 					}
 				},
 				"android": {
-					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": ""
+					"mdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\240_282.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\320_442.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\480_762.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\720_1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "C:\\Users\\Administrator\\Desktop\\MEET\\MEET\\img\\cover\\1080_1882.png"
 				}
 			},
 			"plugins": {
