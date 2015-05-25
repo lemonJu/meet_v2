@@ -66,59 +66,68 @@
 					user_pic.style.display = 'block';
 				}
 			}
-			document.addEventListener("plusready", function() {
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener("plusready", plusReady, false);
+			}
+			function plusReady() {
 				var xhr = null;
 				$('.logup').tap(function() {
 					upload()
 					xhrCreate();
 				})
-				$('.back').tap(function(){
+				$('.back').tap(function() {
 					back();
 				})
-				$('.camera').tap(function(){
+				$('.camera').tap(function() {
 					clicked('photo_up.html')
 				})
-			}, false);
+			}
 			function upload() {
-			var url = REMOTEURL+"/upload";
-			var wt = plus.nativeUI.showWaiting();
-			var task = plus.uploader.createUpload(url, {
-					method: "POST"
-				},
-				function(t, status) { //上传完成
-					if (status == 200) {
-						wt.close()
-					} else {
-						wt.close();
+				var url = REMOTEURL + "/upload";
+				var wt = plus.nativeUI.showWaiting();
+				var task = plus.uploader.createUpload(url, {
+						method: "POST"
+					},
+					function(t, status) { //上传完成
+						if (status == 200) {
+							wt.close()
+						}
 					}
-				}
-			);
-			var path = $('#img').attr('src');
-			var num = path.indexOf('/doc')
-			var load_ = '_'+path.substr(num+1)
-			task.addFile(load_)
-			task.start();
-		}
+				);
+				var path = $('#img').attr('src');
+				var num = path.indexOf('/doc')
+				var load_ = '_' + path.substr(num + 1);
+				console.log(load_)
+				task.addFile(load_);
+				task.addData('wenjian', 'hehe')
+				task.start();
+			}
+
 			function imgError() {
-			w && (w.close(), w = null);
-			document.getElementById("img").style.display = "none";
-			plus.nativeUI.alert("无效的图片资源", function() {
-				back();
-			});
-		}
-		function imgLoaded() {
-			w && (w.close(), w = null);
-			var wid = $('.pic_border').width();
-			var hei = $('.pic_border').height();
-			$('#img').width(wid);
-			$('#img').height(hei);
-		}
-		function loadMedia(src) {
-			document.getElementById("img").src = src;
-		}
+				w && (w.close(), w = null);
+				document.getElementById("img").style.display = "none";
+				plus.nativeUI.alert("无效的图片资源", function() {
+					back();
+				});
+			}
+
+			function imgLoaded() {
+				w && (w.close(), w = null);
+				var wid = $('.pic_border').width();
+				var hei = $('.pic_border').height();
+				$('#img').width(wid);
+				$('#img').height(hei);
+			}
+
+			function loadMedia(src) {
+				document.getElementById("img").src = src;
+			}
+
 			function xhrCreate() {
 				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val();
-				var url = REMOTEURL+"/logup";
+				var url = REMOTEURL + "/logup";
 				xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) {
