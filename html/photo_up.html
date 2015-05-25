@@ -69,9 +69,9 @@
 				var url = "";
 					if (suffix == ".mov" || suffix == ".3gp" || suffix == ".mp4" || suffix == ".avi") {
 						//if(unv){plus.runtime.openFile("_doc/camera/"+name);return;}
-						url = "camera_video.html";
+						return;
 					} else {
-						url = "camera_image.html";
+						url = "regist.html";
 					}
 					w = plus.webview.create(url, url, {
 						scrollIndicator: 'none',
@@ -120,9 +120,9 @@
 					var url = "";
 					if (suffix == ".mov" || suffix == ".3gp" || suffix == ".mp4" || suffix == ".avi") {
 						//if(unv){plus.runtime.openFile("_doc/camera/"+name);return;}
-						url = "camera_video.html";
+						return;
 					} else {
-						url = "camera_image.html";
+						url = "regist.html";
 					}
 					w = plus.webview.create(url, url, {
 						scrollIndicator: 'none',

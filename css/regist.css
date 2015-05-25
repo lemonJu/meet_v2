@@ -7,14 +7,13 @@
   line-height: 5.5em;
 }
 .pic_content {
-	padding-top: 15px;
   margin: 0.25em auto;
   text-align: center;
   width: 5em;
   height: 5em;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #9e84ff;
+  /*border: 1px solid #9e84ff;*/
 }
 .pic_content img {
   width: 3em;

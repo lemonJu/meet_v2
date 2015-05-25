@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Uploader Example</title>
+<script type="text/javascript" src="../js/base.js" ></script>
+<script type="text/javascript" >
+// 扩展API加载完毕后调用onPlusReady回调函数 
+document.addEventListener( "plusready", onPlusReady, false );
+var r = null; 
+// 扩展API加载完毕，现在可以正常调用扩展API 
+function onPlusReady() {
+	document.getElementsByTagName('input')[0].onclick = function(){
+		createUpload()
+	}
+}
+// 创建上传任务
+function createUpload() {
+	var task = plus.uploader.createUpload( REMOTEURL+"/upload", 
+		{ method:"POST",blocksize:204800,priority:100 },
+		function ( t, status ) {
+			// 上传完成
+			if ( status == 200 ) { 
+				alert( "Upload success: " + t.url );
+			} else {
+				alert( "Upload failed: " + status );
+			}
+		}
+	);
+	task.addFile( "_doc/camera/1432567384368.jpg", {key:"testdoc"} );
+	task.addData( "string_key", "string_value" );
+	//task.addEventListener( "statechanged", onStateChanged, false );
+	task.start();
+}
+</script>
+</head>
+<body >
+	<input id="upload" type="button" value="Create upload task"></input>
+</body>
+</html>
