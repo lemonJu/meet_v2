@@ -4,17 +4,15 @@ document.addEventListener("plusready", function() {
 
 
 	// 切换tabs
-	$(".tool_bar").on("click", function() {
+	$(".tool_bar").on("tap", function() {
 		var tabid = $(this).attr("data-id");
 		$(".tabs").css("display", "none");
 		$(tabid).css("display", "block");
-		$(".tool_bar").css("opacity", "1");
-		$(this).css("opacity", "0.5");
-		
-		
+		$(".tool_bar").removeClass('active');
+		$(this).addClass('active');
 	});
 	
-	$("#friends_bar").click(function() {
+	$("#friends_bar").tap(function() {
 		ajax(REMOTEURL + '/friendsGet', null, function(obj){
 			var html = '';
 			var people = JSON.parse(obj);
@@ -35,16 +33,16 @@ document.addEventListener("plusready", function() {
 	    			</div>\
 	    		</div>';
 	    		
-	    		$("#friends_box").append(html);
+	    		$("#friends_box").html(html);
 			})
 		}, null)
 	})
 
 	// trigger事件触发聊天tabs
-	$(".tool_one").trigger("click");
+	$(".tool_one").trigger("tap");
 
 	// 联系人点击跳转到聊天界面
-	$("#friends_box").on("click", ".friends", function() {
+	$("#friends_box").on("tap", ".friends", function() {
 		var name = $(this).find(".name").html();
 		var qianming = $(this).find(".qianming").html();
 		var imgsrc = $(this).find("img").first().attr("src");
@@ -69,8 +67,6 @@ document.addEventListener("plusready", function() {
 
 		//  点击后跳转到相应的聊天界面
 		item.set('friendsActive', name);
-		console.log('friend:', name);
-		
 		clicked('li_chat.html')
 	});
 

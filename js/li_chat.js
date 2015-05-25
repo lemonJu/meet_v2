@@ -112,7 +112,7 @@ document.addEventListener("plusready", function() {
 				    		</span>\
 			    		</div>\
 			    	</div>';
-					$("#chat_body").append(temp)
+					$("#chat_body").html(temp)
 				})
 				getMessage()
 			}

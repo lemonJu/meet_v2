@@ -1,108 +1,100 @@
-
 /* chat css样式  -------------start */
-body{
+
+body {
 	background-color: #f3f4f8;
 }
-header{
+header {
 	background: #f3f4f8 url(../img/tongxin_header.png) no-repeat 0 0;
 	background-size: 100% 100%;
 }
-header i{
+header i {
 	position: absolute;
 	right: 5%;
 	color: #fff;
 }
-
-
 /* body css start */
-#body{
+
+#body {
 	height: calc(100% - 100px);
 	width: 100%;
 	position: absolute;
 }
-
-
-#search_box{
+#search_box {
 	height: 50px;
-line-height: 50px;
-padding: 0 5%;
-margin-top: 50px;
+	line-height: 50px;
+	padding: 0 5%;
+	margin-top: 50px;
 }
-.input_box{
+.input_box {
 	display: inline-block;
-width: 100%;
-height: 60%;
-border: 1px solid #d3d3d3;
-vertical-align: middle;
-border-radius: 5% / 50%;
+	width: 100%;
+	height: 60%;
+	border: 1px solid #d3d3d3;
+	vertical-align: middle;
+	border-radius: 5% / 50%;
 }
-.input_box label{
-float: left;
-width: 14%;
-height: 100%;
-padding: 5px 0 0 15px;
+.input_box label {
+	float: left;
+	width: 14%;
+	height: 100%;
+	padding: 5px 0 0 15px;
 }
-.input_box i{
+.input_box i {
 	float: left;
 	color: #8d9095;
 	cursor: pointer;
 }
-#searchFriend{
+#searchFriend {
 	float: left;
-outline: 0 none;
-border: none;
- background-color: #f2f4f7; 
-margin: 5px 0 0 0;
-width: 80%;
-text-indent: 4px;
+	outline: 0 none;
+	border: none;
+	background-color: #f2f4f7;
+	margin: 5px 0 0 0;
+	width: 80%;
+	text-indent: 4px;
 }
-
 /* 聊天box */
-#chat_box{
-	
-}
 
+#chat_box {}
 /* 摇一摇box */
-#shake_box{
+
+#shake_box {
 	display: none;
 }
-.shake_text{
+.shake_text {
 	padding-top: 3em;
 }
-.shake_text p{
+.shake_text p {
 	margin: 0;
-padding: 1em 3em;
-line-height: 1.5em;
+	padding: 1em 3em;
+	line-height: 1.5em;
 }
-i.keypress_down{
+i.keypress_down {
 	color: #f0f;
-display: block;
-text-align: center;
-}
-.shake_link{
 	display: block;
-width: 70%;
-margin: 0 auto;
-height: 3em;
-line-height: 3em;
-text-align: center;
-color: #fff;
-background: #f0f;
+	text-align: center;
 }
-
-
-
+.shake_link {
+	display: block;
+	width: 70%;
+	margin: 0 auto;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	color: #fff;
+	background: #f0f;
+}
 /* 个人信息 */
-#private_box{
+
+#private_box {
 	display: none;
 }
-
-
 /*  search box end */
+
 #private_box,
 #shake_box,
 #friends_box,
-#chat_box{
+#chat_box {
 	border-top: 1px solid #ccc;
 	overflow: auto;
 	position: fixed;
@@ -111,148 +103,132 @@ background: #f0f;
 	width: 100%;
 	left: 0;
 }
-#friends_box{
+#friends_box {
 	display: none;
 }
-
 /* body css end */
 
-.friends{
+.friends {
 	height: 60px;
-width: 100%;
-overflow: hidden;
-padding-top: 5px;
-/* background: #ddd; */
-border-bottom: 1px solid #ccc;
-cursor: pointer;
+	width: 100%;
+	overflow: hidden;
+	padding-top: 5px;
+	/* background: #ddd; */
+	
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
 }
-.head_imgbox{
+.head_imgbox {
 	float: left;
-width: 3.3em;
-margin-top: 2px;
-height: 3.3em;
-margin-left: -97%;
-background-color: #aaa;
-border-radius: 50%;
-overflow: hidden;
+	width: 3.3em;
+	margin-top: 2px;
+	height: 3.3em;
+	margin-left: -97%;
+	background-color: #aaa;
+	border-radius: 50%;
+	overflow: hidden;
 }
-.head_imgbox img{
+.head_imgbox img {
 	display: block;
-width: 100%;
-height: 100%;
+	width: 100%;
+	height: 100%;
 }
-
-.name_wrap{
+.name_wrap {
 	float: left;
-width: 100%;
-padding: 5px 3.5em 5px 5em;
+	width: 100%;
+	padding: 5px 3.5em 5px 5em;
 }
-.name_box{
-width: 100%;
-/*overflow: hidden;
+.name_box {
+	width: 100%;
+	/*overflow: hidden;
 text-overflow: ellipsis;*/
 }
-.name{
-width: 100%;
-height: 1.5em;
-font-weight: bold;
-line-height: 1.5em;
+.name {
+	width: 100%;
+	height: 1.5em;
+	font-weight: bold;
+	line-height: 1.5em;
 }
-.qianming{
+.qianming {
 	/*float: left; */
-width: 100%;
-height: 1.3em;
-line-height: 15px;
-overflow: hidden;
-text-overflow: ellipsis;
+	
+	width: 100%;
+	height: 1.3em;
+	line-height: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.turn_left{
+.turn_left {
 	float: right;
-height: 100%;
-/* padding: 0 19px; */
-width: 2.5em;
-margin-left: -2.5em;
-color: #cbcbcb;
-margin-top: -5px;
+	height: 100%;
+	/* padding: 0 19px; */
+	
+	width: 2.5em;
+	margin-left: -2.5em;
+	color: #cbcbcb;
+	margin-top: -5px;
 }
-
-
 /* footer 样式呈现  begin */
-footer{
+
+footer {
 	border-top: 1px solid #967fff;
 	background-color: #F3F4F8;
 }
-.tool_box{
+.tool_box {
 	width: 100%;
-height: 100%;
-overflow: hidden;
-background-color: #F3F4F8;
-position: relative;
+	height: 100%;
+	overflow: hidden;
+	background-color: #F3F4F8;
+	position: relative;
 }
-.tool_bar{
+.tool_bar {
 	display: inline-block;
 	padding-top: 5px;
-height: 100%;
-width: 24%;
-text-align: center;
-overflow: hidden;
-cursor: pointer;
--webkit-tap-highlight-color: transparent;
+	height: 100%;
+	width: 24%;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
-.tool_one{
+.tool_one {
 	position: absolute;
-left: 0;
-top: 0;
+	left: 0;
+	top: 0;
 }
-.tool_two{
+.tool_two {
 	position: absolute;
-left: 24%;
-top: 0;
+	left: 24%;
+	top: 0;
 }
-.tool_three{
+.tool_three {
 	position: absolute;
-left: 51%;
-top: 0;
+	left: 51%;
+	top: 0;
 }
-.tool_four{
+.tool_four {
 	position: absolute;
-right: 0;
-top: 0;
+	right: 0;
+	top: 0;
 }
-.tool_img{
-	width: 3em;
-height: 1.8em;
-text-indent: -9999px;
-margin-left:25%;
+.tool_img {
+	color: #9f9f9f;
+	font-size: 28px;
+	overflow: hidden;
+	padding-bottom: 0px;
+	text-align: center;
 }
-.img_one{
-	background: #f3f4f8 url(../img/tongxin_foot_chat.png) no-repeat;
-	background-size: 100% 100%;
+.tool_text {
+	text-align: center;
+	color: #cbcbcb;
+	font-size: .8em;
+	margin-top: 0.2em;
 }
-.img_two{
-	background: #f3f4f8 url(../img/tongxin_foot_yao.png) no-repeat;
-	background-size: 100% 100%;
+.tool_bar span {
+	display: block;
 }
-.img_three{
-	background: #f3f4f8 url(../img/tongxun_people.png) no-repeat;
-	background-size: 100% 100%;
-}
-.img_four{
-	background: #f3f4f8 url(../img/tongxun_yujian.png) no-repeat;
-	background-size: 100% 100%;
-}
-.tool_text{
-	width: 3em;
-text-align: center;
-color: #9b85f4;
-font-size: 1em;
-margin-top: 0.2em;
-margin-left: 25%;
-}
-.tool_bar span{
-	float: left;
+
+.tool_bar.active span,.tool_bar.active i{
+	color: #ffbb7f
 }
 /*  footer 样式呈现  end */
-
-
-
