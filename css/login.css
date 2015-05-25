@@ -1,190 +1,132 @@
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.pic_border {
+  margin: 30px auto 0;
+  height: 5.5em;
+  width: 5.5em;
+  border-radius: 50%;
+  border: 1px solid #9e84ff;
+  line-height: 5.5em;
 }
-body {
-  font-family: 'Microsoft Yahei';
-  font-size: 14px;
-  line-height: 100%;
-  color: #000;
-  background-color: #fff;
-  margin: 0;
+.pic_content {
+  margin: 0.25em auto;
+  text-align: center;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #9e84ff;
 }
-a {
-  color: #474747;
-  text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+.pic_content img {
+  width: 5em;
+  height: 5em;
 }
-a:active {
-  color: #2e2e2e;
+.intro {
+  width: 50%;
+  margin: 2em auto 4em;
+  text-align: center;
+  color: #656364;
+  font-size: 0.7em;
 }
-.content {
+.regist {
+  overflow: hidden;
+  padding-right: 1.5em;
+}
+.regist div {
+  float: right;
+  font-size: 0.7em;
+  color: #656364;
+}
+.user_name {
+  background: url(../img/user_name.png) no-repeat 1em center;
+}
+.password {
+  background: url(../img/password.png) no-repeat 1em center;
+}
+.user_name,
+.password {
+  padding-left: 2em;
+  margin-bottom: 1em;
+  line-height: 2em;
+  height: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #fffefc;
+  width: 100%;
+}
+.user_name input,
+.password input {
+  height: 1.5em;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.info_input {
+  width: 100%;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  background-color: #fff;
-  -webkit-overflow-scrolling: touch;
+  bottom: 0em;
 }
-.content-padded {
-  margin: 5px;
-}
-.pull-left {
+.name,
+.user {
+  padding-left: 2em;
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
+  width: 100%;
   float: left;
 }
-.pull-right {
-  float: right;
-}
-/* dont fix IE/Mac */
-.clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-.bar {
-  width: 100%;
-  z-index: 10;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.bar-header {
-  position: relative;
-  height: 40px;
-}
-.bar-header a,
-.bar-header span,
-.bar-header .title {
-  line-height: 40px;
-}
-.bar-footer {
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.title {
-  position: absolute;
-  display: block;
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  font-weight: normal;
-  color: #000;
-  text-align: center;
-  white-space: nowrap;
-}
-.title a {
-  color: inherit;
-}
-body {
-  background-color: #f3f4f8;
-}
-header {
-  background: #f3f4f8 url(../img/tongxin_header.png) no-repeat 0 0;
-  background-size: 100% 100%;
-}
-header .title,
-footer {
-  color: #fff;
-  font-size: 1.1em;
-  letter-spacing: 0.2em;
-}
-/*container 容器*/
-#container {
-  position: absolute;
-  width: 100%;
-  height: -webkit-calc(100% - 80px);
-}
-#head_img_box {
-  margin: 0 auto;
-  width: 9em;
-  height: 9em;
-  padding: 0.5em;
-  border-radius: 50%;
-  border: 1px solid #aaa;
-  margin-bottom: 10%;
-  margin-top: 10%;
-}
-#head_img {
-  background-color: #aaa;
-  margin: -1px 0 0 -1px;
-  width: 8em;
-  height: 8em;
-  display: block;
-  background: url(../img/head_img.png) no-repeat center center;
-  background-size: 100% 100%;
-  border-radius: 50%;
-  border: 1px solid #f0f;
-  text-indent: -9999px;
-}
-/*body部分*/
-#mingyan_box {
-  width: 100%;
-  height: auto;
-}
-#mingyan_box p {
-  text-align: center;
-  color: #636363;
-  font-size: 1.2em;
-}
-/*from 表单*/
-#form_box {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-}
-#register_box {
+.name input,
+.user input {
+  border: 0;
+  outline: none;
   width: 100%;
   height: 1.5em;
-  padding-right: 8%;
-  padding-bottom: 1em;
-  overflow: hidden;
 }
-#register_box a {
-  display: inline-block;
-  float: right;
-  color: #7d7a67;
-}
-/*表单框*/
-div#username_box,
-div#password_box {
-  background-color: #fff;
-  padding: 0.7em 0;
-  margin-bottom: 1em;
-}
-div#username_box label,
-div#password_box label {
-  text-align: center;
-  display: inline-block;
-  width: 20%;
-  height: 100%;
-}
-span.username_input,
-span.password_input {
-  display: inline-block;
-  width: 75%;
-}
-#username,
-#password {
-  outline: none;
-  border: none;
-  text-indent: 0.3em;
+.pass,
+.e-mail,
+.tel,
+.pass_sure,
+.sex {
+  border: 1px solid #e6e6e6;
+  background-color: #ffffff;
   width: 100%;
+  padding-left: 2em;
 }
-/* footer部分 */
+.name input,
+.pass input,
+.e-mail input,
+.tel input,
+.pass_sure input,
+.user input,
+.sex input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 2em;
+}
+.user {
+  padding-left: 1em;
+}
+.name {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.sex {
+  background: url(../img/sex.png) no-repeat 1em center #ffffff;
+}
+.e-mail {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.pass {
+  background: url(../img/pass.png) no-repeat 1em center #ffffff;
+}
+.pass_sure {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
+.tel {
+  background: url(../img/name.png) no-repeat 1em center #ffffff;
+}
 footer {
-  background-color: #9f7ffe;
-  text-align: center;
-  line-height: 2.5em;
   cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+  color: #ffffff;
+  width: 100%;
+  line-height: 2em;
+  background-color: #9f7ffe;
 }
-/*# sourceMappingURL=login.css.map */
