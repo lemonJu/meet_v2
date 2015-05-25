@@ -1,5 +1,6 @@
 document.addEventListener("plusready", function() {
 	var person = item.get('friendsActive');
+	
 	$(".title").html(person);
 	var count = 1;
 	$(".sound").on("click", function() {
@@ -32,10 +33,10 @@ document.addEventListener("plusready", function() {
 			}, 200)
 		}
 	});
-
+/*
 	var $chatbody = $("#chat_body");
 	var scrollH1 = $chatbody[0].scrollHeight;
-	$chatbody.scrollTop(scrollH1);
+	$chatbody.scrollTop = (scrollH1);*/
 	//  var winH = $(window).height();
 	//  var startbottom = parseInt($chatbody.css("bottom"));
 
@@ -130,4 +131,5 @@ document.addEventListener("plusready", function() {
 	
 	$(".left_back").click(function(){
 		back();
-	}}
+	})
+})
