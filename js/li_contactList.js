@@ -10,11 +10,33 @@ document.addEventListener("plusready", function() {
 		$(tabid).css("display", "block");
 		$(".tool_bar").css("opacity", "1");
 		$(this).css("opacity", "0.5");
+		
+		
 	});
 	
 	$("#friends_bar").click(function() {
-		ajax(REMOTEURL + 'friendsGet', null, function(){
-			
+		ajax(REMOTEURL + '/friendsGet', null, function(obj){
+			var html = '';
+			var people = JSON.parse(obj);
+			people.forEach(function(person) {
+				html += '\
+				<div class="friends clearfix">\
+	    			<div class="name_wrap">\
+	    				<div class="name_box">\
+		    				<div class="name">'+person.nickname_friend+'</div>\
+		    				<div class="qianming">qianmingfsad</div>\
+		    			</div>\
+	    			</div>\
+	    			<div class="head_imgbox">\
+	    				<img src="img/head_img.png" alt="touxiang" width="100%" height="100%"/>\
+	    			</div>\
+	    			<div class="turn_left">\
+	    				<i style="line-height: 60px;font-size:1.6em;" class="fa fa-chevron-right"></i>\
+	    			</div>\
+	    		</div>';
+	    		
+	    		$("#friends_box").append(html);
+			})
 		}, null)
 	})
 
@@ -50,7 +72,6 @@ document.addEventListener("plusready", function() {
 		console.log('friend:', name);
 		
 		clicked('li_chat.html')
-		//window.location.href = "li_chat.html";
 	});
 
 }, false);

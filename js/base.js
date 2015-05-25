@@ -17,7 +17,7 @@ function ajax(url, params, success, error) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
-			success.call(xhr);
+			success.call(xhr, xhr.responseText);
 		}
 	}
 	xhr.onerror = error;

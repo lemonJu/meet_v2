@@ -74,7 +74,7 @@ document.addEventListener("plusready", function() {
 			var xhr = new XMLHttpRequest();
 
 
-			var url = 'http://reloney123.oicp.net:3000/chatSend?' + 'to=xpc' + '&content=' + text;
+			var url = 'http://reloney123.oicp.net:3000/chatSend?' + 'to=' + person + '&content=' + text;
 
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
@@ -128,5 +128,6 @@ document.addEventListener("plusready", function() {
 
 	getMessage()
 	
-	$(".left_back").click(back)
-}, false);
+	$(".left_back").click(function(){
+		back();
+	}}
