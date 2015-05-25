@@ -9,16 +9,20 @@
 		<title></title>
 		<link rel="stylesheet" href="../css/layout.css" />
 		<link rel="stylesheet" href="../css/wait.css"/>
-		<!--<link rel="stylesheet" href="css/wait.css"/>-->
+		<script type="text/javascript" src="../js/jquery.js" ></script>
 		<script src="../js/common.js"></script>
-		<!--<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.1/less.min.js"></script>-->
 	</head>
 	<body>
 		<section>
 			<div class="position">
 				<p>来遇见,只为遇见<span>TA</span></p>
-				<div onclick="clicked('login.html')">立即体验></div>
+				<divclass="go">立即体验></div>
 			</div>
 		</section>
+		<script>
+			$('.go').tap(function(){
+				clicked('login.html')
+			})
+		</script>
 	</body>
 </html>

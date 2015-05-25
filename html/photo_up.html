@@ -167,12 +167,12 @@
 				if (0 != path.indexOf("file://")) {
 					path = "file://" + path;
 				}
-				showgallery()
-				plus.gallery.save(path);
+				showpic()
+				updateHistory()
 			}, function(e) {
 				console.log(e)
 			}, {
-				filename: '_doc/gallery/'
+				filename: '_doc/camera/'
 			});
 		}
 	</script>

@@ -15,14 +15,14 @@
 
 	<body>
 		<header class="bar-header">
-			<div class="back" onclick="back()"><i class="fa fa-chevron-left"></i></div>
+			<div class="back"><i class="fa fa-chevron-left"></i></div>
 			<a>注册</a>
 		</header>
 		<article class="clearfix content" id="fix">
 			<div class="user_pic" id="user_pic">
 				<div class="pic_border">
 					<div class="pic_content">
-						<img src="../img/camera.png" onclick="clicked('photo_up.html')" class="camera"/>
+						<img src="../img/camera.png"class="camera"/>
 					</div>
 				</div>
 			</div>
@@ -64,8 +64,14 @@
 			}
 			document.addEventListener("plusready", function() {
 				var xhr = null;
-				$('.logup').click(function() {
+				$('.logup').tap(function() {
 					xhrCreate();
+				})
+				$('.back').tap(function(){
+					back();
+				})
+				$('.camera').tap(function(){
+					clicked('photo_up.html')
 				})
 			}, false);
 

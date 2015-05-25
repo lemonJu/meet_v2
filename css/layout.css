@@ -19,6 +19,7 @@
 	height: 100%;
 }
 .bar-header {
+	z-index: 999;
   background: url(../img/headerbg.png) no-repeat 0 0 #f3f4f8;
   background-size: 100% 100%;
   position: relative;
@@ -84,12 +85,11 @@ a:active {
 .content {
   position: absolute;
   top: 50px;
-  right: 0;
   bottom: 40px;
-  left: 0;
-  overflow: auto;
   background-color: #f3f4f8;
-  -webkit-overflow-scrolling: touch;
+  /*-webkit-overflow-scrolling: touch;*/
+ overflow: hidden;
+ width: 100%;
 }
 .content-padded {
   margin: 5px;

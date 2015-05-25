@@ -33,7 +33,7 @@
 			</div>
 			<div class="info_input">
 				<div class="regist clearfix">
-					<div><a onclick="clicked('regist.html')">注册></a>
+					<div><a class="regist">注册></a>
 					</div>
 				</div>
 				<div class="user_name">
@@ -53,8 +53,11 @@
 				var user_pic = document.getElementById('user_pic');
 				var intro = document.getElementById('intro');
 				var xhr = null;
-				$('.login').click(function() {
+				$('.login').tap(function() {
 					xhrCreate();
+				})
+				$('.regist').tap(function(){
+					clicked('regist.html')
 				})
 			}, false);
 			window.onresize = function() {
