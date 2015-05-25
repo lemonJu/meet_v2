@@ -2,7 +2,7 @@
 document.addEventListener("plusready", function() {
 	//	var winH = $(window).height();
 
-
+	console.log('!!')
 	// 切换tabs
 	$(".tool_bar").on("tap", function() {
 		var tabid = $(this).attr("data-id");

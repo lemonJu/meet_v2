@@ -125,8 +125,26 @@ i.keypress_down {
 	height: 3.3em;
 	margin-left: -97%;
 	background-color: #aaa;
+	position: relative;
+}
+.tips-message{
+	position: absolute;
+	right: -5px;
+	top: -5px;
 	border-radius: 50%;
+	background: red;
+	color: white;
+	height: 20px;
+	width: 20px;
+	font-size: .7em;
+	line-height: 20px;
+	text-align: center;
+}
+.imgbox_inner{
+	height: 100%;
+	width: 100%;
 	overflow: hidden;
+	border-radius: 50%;
 }
 .head_imgbox img {
 	display: block;
