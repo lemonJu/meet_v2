@@ -42,7 +42,11 @@
   right: 0;
 }
 .bar-footer a {
-  color: #ffffff;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	font-weight: bold;
+  	color: #ffffff;
 }
 .title {
   position: absolute;

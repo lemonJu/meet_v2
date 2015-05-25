@@ -23,7 +23,7 @@
 			<div class="user_pic" id="user_pic">
 				<div class="pic_border">
 					<div class="pic_content">
-						<img src="../img/camera.png" class="camera" onload="imgLoaded();" onerror="imgError();" id="img" />
+						<img src="../img/camera.png" class="camera" id="img" />
 					</div>
 				</div>
 			</div>
@@ -74,57 +74,15 @@
 			function plusReady() {
 				var xhr = null;
 				$('.logup').tap(function() {
-					upload()
 					xhrCreate();
 				})
 				$('.back').tap(function() {
 					back();
 				})
 				$('.camera').tap(function() {
-					clicked('photo_up.html')
+					clicked('../plus/uploader.html')
 				})
 			}
-			function upload() {
-				var url = REMOTEURL + "/upload";
-				var wt = plus.nativeUI.showWaiting();
-				var task = plus.uploader.createUpload(url, {
-						method: "POST"
-					},
-					function(t, status) { //上传完成
-						if (status == 200) {
-							wt.close()
-						}
-					}
-				);
-				var path = $('#img').attr('src');
-				var num = path.indexOf('/doc')
-				var load_ = '_' + path.substr(num + 1);
-				console.log(load_)
-				task.addFile(load_);
-				task.addData('wenjian', 'hehe')
-				task.start();
-			}
-
-			function imgError() {
-				w && (w.close(), w = null);
-				document.getElementById("img").style.display = "none";
-				plus.nativeUI.alert("无效的图片资源", function() {
-					back();
-				});
-			}
-
-			function imgLoaded() {
-				w && (w.close(), w = null);
-				var wid = $('.pic_border').width();
-				var hei = $('.pic_border').height();
-				$('#img').width(wid);
-				$('#img').height(hei);
-			}
-
-			function loadMedia(src) {
-				document.getElementById("img").src = src;
-			}
-
 			function xhrCreate() {
 				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val();
 				var url = REMOTEURL + "/logup";

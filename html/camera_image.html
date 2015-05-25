@@ -70,6 +70,12 @@
 		 // H5 plus事件处理
 		function plusReady() {
 			w = plus.nativeUI.showWaiting();
+			$('.back').tap(function(){
+				back();
+			})
+			$('.sure').tap(function(){
+				upload()
+			})
 		}
 		if (window.plus) {
 			plusReady();
@@ -82,7 +88,7 @@
 			var wid = $('.wrap').width();
 			var hei = $('.wrap').height();
 			$('#img').width(wid);
-			$('#img').height(hei)
+			$('#img').height(hei);
 		}
 
 		function imgError() {
@@ -98,22 +104,22 @@
 		}
 
 		function upload() {
+			var path = $('#img').attr('src');
+				var num = path.indexOf('/doc');
+				var load_ = '_' + path.substr(num + 1);
 			var url = REMOTEURL+"/upload";
 			var wt = plus.nativeUI.showWaiting();
 			var task = plus.uploader.createUpload(url, {
-					method: "POST"
+					method: "POST",
+					blocksize:-1
 				},
 				function(t, status) { //上传完成
-					console.log(t.responseText)
 					if (status == 200) {
 						wt.close()
-					} else {
-						wt.close();
 					}
 				}
 			);
-			var path = $('#img').attr('src')
-			task.addFile(path)
+			task.addFile('wait.html')
 			task.start();
 		}
 	</script>
