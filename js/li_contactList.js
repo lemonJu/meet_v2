@@ -40,31 +40,44 @@ document.addEventListener("plusready", function() {
 
 	// trigger事件触发聊天tabs
 	$(".tool_one").trigger("tap");
-
+	
+	var connecting = {};
 	// 联系人点击跳转到聊天界面
 	$("#friends_box").on("tap", ".friends", function() {
 		var name = $(this).find(".name").html();
-		var qianming = $(this).find(".qianming").html();
-		var imgsrc = $(this).find("img").first().attr("src");
-		var imgalt = $(this).find("img").first().attr("alt");
-
-		var temp = '<div class="friends clearfix">\
+		connecting[name] = {
+			src: $(this).find("img").first().attr("src"),
+			note: $(this).find(".qianming").html()
+		}
+		var temp = '';
+		for(var name in connecting) {
+			temp= '<div class="friends clearfix">\
 	    			<div class="name_wrap">\
 	    				<div class="name_box">\
 		    				<div class="name">' + name + '</div>\
-		    				<div class="qianming">' + qianming + '</div>\
+		    				<div class="qianming">' + connecting[name].note + '</div>\
 		    			</div>\
 	    			</div>\
 	    			<div class="head_imgbox">\
-	    				<img src="' + imgsrc + '" alt="' + imgalt + '" width="100%" height="100%"/>\
+	    				<img src="' + connecting[name].src + '" width="100%" height="100%"/>\
 	    			</div>\
 	    			<div class="turn_left">\
 	    				<i style="line-height: 60px;font-size:1.6em;" class="fa fa-chevron-right"></i>\
 	    			</div>\
 	    		</div>';
+		}
+		 
 
-		$("#chat_box").append(temp);
+		$("#chat_box").html(temp);
 
+		//  点击后跳转到相应的聊天界面
+		item.set('friendsActive', name);
+		clicked('li_chat.html')
+	});
+	
+	
+	$("#chat_box").on("tap", ".friends", function() {
+		var name = $(this).find(".name").html();
 		//  点击后跳转到相应的聊天界面
 		item.set('friendsActive', name);
 		clicked('li_chat.html')

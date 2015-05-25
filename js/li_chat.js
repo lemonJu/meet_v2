@@ -1,7 +1,9 @@
 document.addEventListener("plusready", function() {
 	var person = item.get('friendsActive');
-	
+
 	$(".title").html(person);
+	//console.log(item.get("_$_" + person))
+	$("#chat_body").append(item.get("_$_" + person) || "");
 	var count = 1;
 	$(".sound").on("click", function() {
 		if (count % 2 == 1) {
@@ -33,20 +35,27 @@ document.addEventListener("plusready", function() {
 			}, 200)
 		}
 	});
-/*
+
+
 	var $chatbody = $("#chat_body");
 	var scrollH1 = $chatbody[0].scrollHeight;
-	$chatbody.scrollTop = (scrollH1);*/
-	//  var winH = $(window).height();
-	//  var startbottom = parseInt($chatbody.css("bottom"));
+
+	if ($chatbody.height() - 1 != scrollH1) {
+		$chatbody.get(0).scrollTop = scrollH1;
+	};
 
 	// 检测窗口是否发生改变
 	$(window).on("resize", function() {
 		scrollH1 = $chatbody[0].scrollHeight;
-		$chatbody.scrollTop(scrollH1);
+		if ($chatbody.height() - 1 != scrollH1) {
+			$chatbody.get(0).scrollTop = scrollH1;
+		};
 		$chatbody.css("bottom", "40px");
-
 	});
+	scrollH1 = $chatbody[0].scrollHeight;
+	if (($chatbody.height() - 1) != scrollH1) {
+		$chatbody.get(0).scrollTop = scrollH1;
+	};
 
 	// 发送消息处理
 
@@ -54,7 +63,7 @@ document.addEventListener("plusready", function() {
 	$("#send").on("click", function() {
 		var text = $("#message").val();
 		if (text === "") {
-			$("#message").attr("placeholder", "不能发送空信息...");
+			alert('不能发送空消息');
 		} else {
 			var templ = '<div class="chat_row_me">' +
 				'<div class="porel">' +
@@ -71,6 +80,13 @@ document.addEventListener("plusready", function() {
 				'</div>' +
 				'</div>';
 			$(".chat_body").append(templ);
+			// 滚动到底部
+			scrollH1 = $chatbody[0].scrollHeight;
+			if(($chatbody.height()-1) != scrollH1){
+				$chatbody.get(0).scrollTop = scrollH1;
+			};
+			
+			//清空消息框
 			$("#message").val("");
 			var xhr = new XMLHttpRequest();
 
@@ -79,7 +95,6 @@ document.addEventListener("plusready", function() {
 
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
-					console.log(xhr.responseText)
 
 				}
 			}
@@ -95,7 +110,6 @@ document.addEventListener("plusready", function() {
 
 		var url = 'http://reloney123.oicp.net:3000/chatGet';
 		xhr.onreadystatechange = function() {
-			console.log(xhr.readyState);
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var message = JSON.parse(xhr.responseText);
 				message.forEach(function(mess) {
@@ -113,7 +127,7 @@ document.addEventListener("plusready", function() {
 				    		</span>\
 			    		</div>\
 			    	</div>';
-					$("#chat_body").html(temp)
+					$("#chat_body").append(temp)
 				})
 				getMessage()
 			}
@@ -128,8 +142,9 @@ document.addEventListener("plusready", function() {
 	}
 
 	getMessage()
-	
-	$(".left_back").click(function(){
+
+	$(".left_back").click(function() {
+		item.set("_$_" + person, $("#chat_body").html());
 		back();
 	})
 })
