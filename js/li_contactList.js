@@ -11,6 +11,12 @@ document.addEventListener("plusready", function() {
 		$(".tool_bar").css("opacity", "1");
 		$(this).css("opacity", "0.5");
 	});
+	
+	$("#friends_bar").click(function() {
+		ajax(REMOTEURL + 'friendsGet', null, function(){
+			
+		}, null)
+	})
 
 	// trigger事件触发聊天tabs
 	$(".tool_one").trigger("click");
@@ -40,7 +46,11 @@ document.addEventListener("plusready", function() {
 		$("#chat_box").append(temp);
 
 		//  点击后跳转到相应的聊天界面
-		window.location.href = "li_chat.html?friend=" + name;
+		item.set('friendsActive', name);
+		console.log('friend:', name);
+		
+		clicked('li_chat.html')
+		//window.location.href = "li_chat.html";
 	});
 
 }, false);

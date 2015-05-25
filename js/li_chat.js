@@ -1,6 +1,5 @@
 document.addEventListener("plusready", function() {
-	var href = window.location.href;
-	var person = (/friend=(.*)/.exec(href))[1];
+	var person = item.get('friendsActive');
 	$(".title").html(person);
 	var count = 1;
 	$(".sound").on("click", function() {
@@ -128,4 +127,6 @@ document.addEventListener("plusready", function() {
 	}
 
 	getMessage()
+	
+	$(".left_back").click(back)
 }, false);
