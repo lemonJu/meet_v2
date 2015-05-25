@@ -11,9 +11,6 @@ $(function(){
 		$(".tool_bar").css("opacity", "1");
 		$(this).css("opacity", "0.5");
 	});
-	
-	
-	
 });
 
 

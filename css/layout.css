@@ -5,6 +5,7 @@
   backface-visibility: hidden;
 }
 .bar-header .back{
+	z-index: 99;
 	padding-left: 10px;
 	left: 0;
 	top: 0;

@@ -105,9 +105,45 @@
 		function loadMedia(src) {
 			document.getElementById("img").src = src;
 		}
-		$('.back').click(function() {
+		$('.back').tap(function() {
 			back()
 		})
+		function upload() {
+			if (files.length <= 0) {
+				plus.nativeUI.alert("没有添加上传文件！");
+				return;
+			}
+			var wt = plus.nativeUI.showWaiting();
+			var task = plus.uploader.createUpload(url, {
+					method: "POST"
+				},
+				function(t, status) { //上传完成
+					if (status == 200) {
+						plus.storage.setItem("uploader", t.responseText);
+						var w = plus.webview.create("uploader_ret.html", "uploader_ret.html", {
+							scrollIndicator: 'none',
+							scalable: false
+						});
+						w.addEventListener("loaded", function() {
+							wt.close();
+							w.show("slide-in-right", 300);
+						}, false);
+					} else {
+						outLine("上传失败：" + status);
+						wt.close();
+					}
+				}
+			);
+			task.addData("client", "HelloH5+");
+			task.addData("uid", getUid());
+			for (var i = 0; i < files.length; i++) {
+				var f = files[i];
+				task.addFile(f.path, {
+					key: f.name
+				});
+			}
+			task.start();
+		}
 	</script>
 
 </html>
