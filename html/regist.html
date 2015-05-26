@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
 		<title>RIGIST</title>
 	</head>
-
 	<body>
 		<header class="bar-header">
 			<div class="back"><i class="fa fa-chevron-left"></i>
@@ -28,7 +27,8 @@
 				</div>
 			</div>
 			<div class="info_input">
-				<div class="name_user clearfix">
+				<div id="wrap">
+					<div class="name_user clearfix">
 					<div class="name clearfix">
 						<input type="text" placeholder="昵称" class="nicknamei" />
 					</div>
@@ -49,11 +49,13 @@
 					<input placeholder="个人描述" class="pd"></input>
 				</div>
 			</div>
+				</div>
 		</article>
 		<footer class="bar-footer"><a class="logup">确认注册</a>
 		</footer>
 		<script src="../js/jquery.js"></script>
 		<script src="../js/base.js"></script>
+		<script src="../js/iscroll.js" ></script>
 		<script src="../js/common.js"></script>
 		<script>
 			var w = null;
@@ -71,9 +73,41 @@
 			} else {
 				document.addEventListener("plusready", plusReady, false);
 			}
+			$(function(){
+//				var url = REMOTEURL + "/getRegisterImg?uid="+item.get('uid');
+
+				var url = "http://113.251.174.102:3000/getRegisterImg?uid="+item.get('uid');
+				ajax(url,null,function(e){
+					console.log(e)
+//							var path = plus.io.convertLocalFileSystemURL(xhr.responseText)
+							$('#img').attr('src',e)
+							var w = $('.pic_border').width();
+							var h = $('.pic_border').height();
+							$('#img').width(w);
+							$('#img').height(h);
+				},null,'GET')
+//				var xhr = null;
+//				var url = REMOTEURL + "/getRegisterImg";
+//				xhr = new XMLHttpRequest();
+//				xhr.onreadystatechange = function() {
+//					if (xhr.readyState == 4 && xhr.status == 200) {
+//						console.log(xhr.responseText);
+//						if(xhr.responseText!=''){
+//							var path = plus.io.convertLocalFileSystemURL(xhr.responseText)
+//							$('#img').src = path;
+//						}else{
+//							console.log('meiyou')
+//						}
+//					}
+//				}
+//				xhr.open("GET", url);
+//		
+//				xhr.send();
+				
+			})
 			function plusReady() {
-				var xhr = null;
 				$('.logup').tap(function() {
+					var xhr = null;
 					xhrCreate();
 				})
 				$('.back').tap(function() {
@@ -89,7 +123,7 @@
 				xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) {
-						console.log(xhr.responseText)
+						clicked('login.html')
 					}
 				}
 				xhr.open("POST", url);

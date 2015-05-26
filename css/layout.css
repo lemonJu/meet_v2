@@ -91,10 +91,11 @@ a:active {
   position: absolute;
   top: 50px;
   bottom: 40px;
+  /*min-height: 320px;*/
   background-color: #f3f4f8;
-  /*-webkit-overflow-scrolling: touch;*/
- overflow: hidden;
- width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  width: 100%;
 }
 .content-padded {
   margin: 5px;

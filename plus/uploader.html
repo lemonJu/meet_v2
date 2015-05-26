@@ -38,7 +38,8 @@
 		<script type="text/javascript" src="../js/base.js"></script>
 		<script type="text/javascript" src="../js/jquery.js"></script>
 		<script type="text/javascript">
-			var server = REMOTEURL + "/upload";
+//			var server = REMOTEURL + "/uploadRegisterImg";
+			var server = "http://113.251.174.102:3000/uploadRegisterImg"
 			var files = [];
 			 // 上传文件
 			document.addEventListener("plusready", onPlusReady, false);
@@ -53,13 +54,12 @@
 				$('#glr').click(function() {
 					appendByGallery();
 				})
-				$('#button').tap(function(){
+				$('#button').tap(function() {
 					upload();
 				})
 			}
 
 			function upload() {
-					
 					if (files.length <= 0) {
 						plus.nativeUI.alert("没有添加上传文件！");
 						return;
@@ -73,8 +73,6 @@
 								wt.close();
 								$('.wraps').remove();
 								clicked('../html/regist.html')
-							} else {
-								wt.close();
 							}
 						}
 					);
@@ -155,7 +153,9 @@
 				// 产生一个随机数
 
 			function getUid() {
-				return Math.floor(Math.random() * 100000000 + 10000000).toString();
+				var a = Math.floor(Math.random() * 100000000 + 10000000).toString();
+				item.set('uid',a)
+				return a;
 			}
 		</script>
 		<link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
@@ -171,12 +171,13 @@
 			<ul id="files" style="text-align:left;">
 
 			</ul>
-			
-							<div class="cmr" id="cmr">拍照</div>
-							<div class="glr" id="glr">相册选取</div>
-	
+
+			<div class="cmr" id="cmr">拍照</div>
+			<div class="glr" id="glr">相册选取</div>
+
 		</div>
-		<footer class="bar-footer" id="button"><a>确定</a></footer>
+		<footer class="bar-footer" id="button"><a>确定</a>
+		</footer>
 	</body>
 
 </html>
