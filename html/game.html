@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="misapplication-tap-highlight" content="no" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/regist.css" />
+    <link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
+    <script src="../js/jquery.js"></script>
+    <title>GAME</title>
+    <style>
+    #main {
+        width: 80%;
+        height: 400px;
+       /* border: 2px solid green;*/
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #container {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        top:-100px;
+        background: white;
+    }
+    
+    .row {
+        width: 100%;
+        height: 100px;
+    }
+    
+    .cell {
+        width: 25%;
+        height: 100px;
+        float: left;
+        background: #ffffff;
+    }
+    
+    .black {
+        background: black;
+    }
+    
+    #score {
+        text-align: center;
+    }
+    
+    .res_btn {
+        float: right;
+        border: 1px solid #000000;
+        margin: 20px 10% 0 0;
+        padding: 5px 5px;
+        border-radius: 5px;
+        box-shadow: ;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="bar-header">
+        <div class="back" onclick="back()"><i class="fa fa-chevron-left" onclick="back()"></i>
+        </div>
+        <a>解密陌生人</a>
+    </header>
+    <article class="clearfix content" id="fix">
+        <h1 id="score">30</h1>
+        <div id="main">
+            <div id="container"></div>
+        </div>
+    </article>
+    <footer class="bar-footer"><a class="logup" id="restart">重新开始</a>
+    </footer>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+    document.addEventListener("plusready", function() {
+    var clock = null; // 定时器操作句柄
+    	var state = 0; // 0初始化,1进行中, 2 暂停, 3失败
+    	var speed = 4;
+        var num = 0;
+
+    	/*
+    	* 初始化
+    	*/
+    	function init() {
+    		for(var i=0; i<4; i++) {
+    			crow();
+    		}
+
+    		$('#main').tap(function (ev) {
+    			judge(ev);
+    		})
+    	}
+
+    	function judge(ev) {
+    		if(state == 3) {
+    			alert('请点击重新开始');
+    			return;
+    		}
+    		if(ev.target.className.indexOf('black') == -1) {
+
+			} else {
+				ev.target.className = 'cell';
+				ev.target.parentNode.pass = 1;
+				score();
+    		}
+    			//console.log(ev.target);
+    	}
+
+    	/*
+    	* start() 启动
+    	*/
+    	function start(){
+    		clock = window.setInterval(move , 40);
+    	}
+
+    	/*
+    	* 动画 
+    	*/
+    	function move() {
+    		var con = $$('container');
+    		var top = parseInt(window.getComputedStyle(con , null)['top']);
+    		
+    		if(speed + top > 0) { //一步会走过头,直接top=0
+    			top = 0;
+    		} else {
+	    		top += speed; //调节每次下降的像素
+    		}
+    		
+    		con.style.top = top + 'px';
+
+    		// 
+
+    		if(top == 0) {
+    			crow();
+    			con.style.top = '-100px';
+    			drow();
+    		} else if(top == (-100 + speed)) {
+    			//console.log(con.lastChild);
+    			var rows = con.childNodes;
+    			if( (rows.length == 5) && (rows[rows.length-1].pass !== 1)) {
+    				fail();
+    			} 
+    		}
+    	}
+ 
+    	/*
+    	* 加速函数
+    	*/
+    	function jiasu() {
+    		speed +=2;
+    		if(speed == 20) {
+    			alert('你的电脑太卡了');
+    		}
+    	}
+
+    	/*
+    	* 输,结束
+    	*/
+    	function fail() {
+		    clearInterval(clock);
+			state = 3;
+	
+    	}
+
+    	/*
+    	* 计分
+    	*/
+    	function score() {
+    		var newscore = ++num;
+    		if(newscore % 5 == 0) {
+    			jiasu()
+    		}
+            $$('score').innerHTML = 5-newscore;
+            if($$('score').innerHTML==0){
+                success();
+            }
+    	}
+
+    	/*
+    	* 创建div.row
+    	*/
+    	function crow(){
+    		var con = $$('container');
+    		var row = cdiv('row');
+    		var classes = createSn();
+
+    		for(var i=0; i<4; i++) {
+    			row.appendChild(cdiv(classes[i]));
+    		}
+
+
+    		if(con.firstChild == null) {
+    			con.appendChild(row);
+    		} else {
+    			con.insertBefore(row , con.firstChild);
+    		}
+    	}
+
+    	/*
+    	* 删除最后一行
+    	*/
+    	function drow(){
+    		var con = $$('container');
+    		if(con.childNodes.length == 6) {
+	    		con.removeChild(con.lastChild);
+    		}
+    	}
+
+    	/**
+    	* 创建div,className是其类名
+    	*/
+    	function cdiv(className) {
+    		var div = document.createElement('div');
+    		div.className = className;
+    		return div;
+    	}
+
+    	/**
+    	* 返回1个数组,随机其中1个单元,值为'cell black',其他3个,皆为cell
+    	**/
+    	function createSn() {
+    		var arr = ['cell','cell','cell','cell'];
+    		var i = Math.floor(Math.random()*4);
+    		arr[i] = 'cell black';
+
+    		return arr; 
+    	}
+
+    	/*
+    	* 按id获取对象
+    	*/
+    	function $$(id) {
+    		return document.getElementById(id);
+    	}
+
+    	init();
+    	start();
+
+        $('#restart').tap(function(){
+          window.location.reload()
+        })
+
+		function success() {
+			alert("恭喜通过啦~");
+			clicked("../html/li_addfriend.html");
+		}
+		function exit() {
+			alert("抱歉你没有通过哦~再试试吧~")
+		}
+    })
+    	
+    </script>
+</body>
+
+</html>
