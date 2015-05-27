@@ -61,16 +61,18 @@
 				$('.regist').tap(function(){
 					clicked('regist.html')
 				})
-			}, false);
-			window.onresize = function() {
-				if (window.innerHeight < 400) {
-					user_pic.style.display = 'none';
-					intro.style.display = 'none'
-				} else {
-					user_pic.style.display = 'block';
-					intro.style.display = 'block'
+				
+				window.onresize = function() {
+					if (window.innerHeight < 400) {
+						user_pic.style.display = 'none';
+						intro.style.display = 'none'
+					} else {
+						user_pic.style.display = 'block';
+						intro.style.display = 'block'
+					}
 				}
-			}
+			}, false);
+			
 
 			function xhrCreate() {
 				var url = REMOTEURL+"/login?username=" + $('.une').val() + "&password=" + $('.psw').val()

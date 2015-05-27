@@ -6,35 +6,45 @@
 		<link rel="stylesheet" href="../css/public.css"/>
 		<link rel="stylesheet" href="../css/li_tongxunlu.css"/>
 		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/li_addfriend.css" />
 		<title>chat</title>
 		<script src="../js/base.js"></script>
 		<script src="../js/jquery.js"></script>
 		<script src="../js/li_contactList.js"></script>
 		
 		<script src="../js/common.js"></script>
+		<style>
+			.friends .name{
+				padding: 0 !important;
+				height: 1.2em;
+				line-height: 100%;
+			}
+		</style>
 	</head>
 	<body>
 		<header class="bar bar-header">
         	<h1 class="title">通讯录</h1>
-        	<i style="line-height: 50px;font-size: 1.6em;" class="fa fa-comments"></i>
+        	<!--<i style="line-height: 50px;font-size: 1.6em;" class="fa fa-comments"></i>-->
     	</header>
-    	
+    	 
     	<!-- body 部分 -->
     	<div id="body">
     		<!-- 查找框 -->
-	    	<div id="search_box">
+	    	<!--<div id="search_box">
 	    		<span class="input_box">
 	    			<label for="searchFriend">
 	    				<i style="font-size: 1.2em;" class="fa fa-search"></i>
 	    			</label>
 	    			<input type="text" name="searchFriend" id="searchFriend" placeholder="Search for friends.." value="" />
 	    		</span>
-	    	</div>
+	    	</div>-->
 	    	<!-- 查找框 结束 -->
 	    	
 	    	<!--  friends box start   通讯录-->
 	    	<div id="friends_box" class="tabs">
-	    		
+	    		<a onclick="clicked('shake.html')" class="link info_link">
+	    			还没有朋友哦~快去摇一摇中寻找朋友吧！^_^
+	    		</a>
 	    	</div>
 	    	<!--  friends box end  通讯录 -->
 	    	
@@ -46,7 +56,7 @@
 	    	
 	    	<!-- shake box start 摇一摇 -->
 	    	<div id="shake_box" class="tabs">
-	    		<a onclick="clicked('shake.html')" class="shake_link">
+	    		<a onclick="clicked('shake.html')" class="link">
 	    			<i class="fa fa-heart-o"></i>
 	    			摇一摇
 	    		</a>
@@ -55,7 +65,15 @@
 	    	
 	    	<!-- my message box start 个人信息 -->
 	    	<div id="private_box" class="tabs" >
-	    		private_box
+	    		<div class="" style="margin: 10px 0 0 10px">
+					<div class="">
+						<div class="img_row">
+							<img src="img/head_img.png" id="my-photo" width="100%" height="100%" />
+						</div>
+						<div class="name" id="my-name">谢鹏程</div>
+						<div class="signature" id="my_signatrue">暂无签名</div>
+					</div>
+				</div>
 	    	</div>
 	    	<!-- my message box end 个人信息 -->
 	    	
@@ -63,19 +81,19 @@
     	
     	<footer class="bar bar-footer">
     		<div class="tool_box">
-    			<div class="tool_bar tool_one" data-id="#chat_box">
+    			<div class="tool_bar tool_one" data-id="#chat_box" data-desp="聊天">
     				<span class="tool_img"><i class="fa fa-heart"></i></span>
     				<span class="tool_text">聊天</span>
     			</div>
-    			<div class="tool_bar tool_two" data-id = "#friends_box">
+    			<div class="tool_bar tool_two" data-id = "#friends_box" data-desp="通讯录">
     				<span class="tool_img"><i class="fa fa-tags"></i></span>
     				<span class="tool_text">通讯录</span>
     			</div>
-    			<div class="tool_bar tool_three" id="friends_bar" data-id="#shake_box">
+    			<div class="tool_bar tool_three" id="friends_bar" data-id="#shake_box" data-desp="遇见">
     				<span class="tool_img"><i class="fa fa-star"></i></span>
     				<span class="tool_text">遇见</span>
     			</div>
-    			<div class="tool_bar tool_four" data-id = "#private_box">
+    			<div class="tool_bar tool_four" data-id = "#private_box" data-desp="我">
     				<span class="tool_img"><i class="fa fa-user"></i></span>
     				<span class="tool_text">我</span>
     			</div>

@@ -7,17 +7,19 @@ document.addEventListener("plusready", function() {
 		$(tabid).css("display", "block");
 		$(".tool_bar").removeClass('active');
 		$(this).addClass('active');
+
+		$(".title").html($(this).data('desp'))
 	});
-	
-	
+
+
 	function getFriends() {
 		ajax(REMOTEURL + '/friendsGet', null, function(obj) {
-		var html = '';
-		var people = JSON.parse(obj);
-		people.forEach(function(person) {
-			userPhotoes[person.nickname_friend] = person.photo;
-			person.note = person.note || "暂无签名"
-			html += '\
+			var html = '';
+			var people = JSON.parse(obj);
+			people.forEach(function(person) {
+				userPhotoes[person.nickname_friend] = person.photo;
+				person.note = person.note || "暂无签名"
+				html += '\
 				<div class="friends clearfix">\
 	    			<div class="name_wrap">\
 	    				<div class="name_box">\
@@ -33,13 +35,13 @@ document.addEventListener("plusready", function() {
 	    			</div>\
 	    		</div>';
 
-			$("#friends_box").html(html);
-		})
-		item.set('userPhotoes', JSON.stringify(userPhotoes));
-	}, null)
+				$("#friends_box").html(html);
+			})
+			item.set('userPhotoes', JSON.stringify(userPhotoes));
+		}, null)
 	}
-	
-getFriends()
+
+	getFriends()
 
 	// trigger事件触发聊天tabs
 	$(".tool_one").trigger("tap");
@@ -59,7 +61,7 @@ getFriends()
 		connecting[name] = {
 			src: $(this).find("img").first().attr("src"),
 			note: $(this).find(".qianming").html()
-		} 
+		}
 		watched[name] = true;
 		// 显示通知界面
 		addUserInfo();
@@ -69,7 +71,7 @@ getFriends()
 	});
 
 
-	$("#chat_box").on("tap", ".friends", function(e) { 
+	$("#chat_box").on("tap", ".friends", function(e) {
 		if (e.target.innerHTML == "删除") return
 		var name = $(this).find(".name").html();
 		// 显示消息成已读
@@ -79,13 +81,13 @@ getFriends()
 		item.set('friendsActive', name);
 		clicked('li_chat.html')
 	});
-	
-	$("#friends_box").swipeDown(function(){
-		if(!$(this).find(".refreash")[0]){
+
+	$("#friends_box").swipeDown(function() {
+		if (!$(this).find(".refreash")[0]) {
 			$(this).prepend("<div class='refreash' style='padding: 10px 0;text-align: center'>正在刷新..</div>");
 			getFriends()
 		}
-		
+
 	})
 
 
@@ -131,7 +133,7 @@ getFriends()
 		$("#chat_box").html(temp);
 	}
 
-	function getMessage() { 
+	function getMessage() {
 		var xhr = new XMLHttpRequest();
 
 		var url = 'http://reloney123.oicp.net:3000/chatGet';
@@ -139,7 +141,7 @@ getFriends()
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var message = JSON.parse(xhr.responseText);
 				message.forEach(function(mess) {
-					
+
 					var temp = item.get("_$_" + mess.from) || "";
 					temp += '<div class="chat_row">\
 			    		<div class="porel">\
@@ -167,7 +169,7 @@ getFriends()
 				getMessage()
 			}
 		}
-		
+
 
 		xhr.open("GET", url, true);
 		xhr.withCredentials = true;
@@ -175,7 +177,14 @@ getFriends()
 	}
 
 	getMessage()
-	setInterval(function(){getMessage()}, 60000*5)
-
+	setInterval(function() {
+		getMessage()
+	}, 60000 * 5)
+	var myInfo = JSON.parse(JSON.parse(item.get("myInfo")));
+	console.log(JSON.stringify(myInfo))
+	$("#my-name").html(myInfo.nickname);
+	$("#my-photo").attr("src", myInfo.photo)
 }, false);
+
+
 // 扩展API加载完毕，现在可以正常调用扩展API
