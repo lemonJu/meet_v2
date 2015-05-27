@@ -155,10 +155,10 @@
 				var arrow = this._arrow = document.createElement("img");
 			
 				arrow.style.position = "absolute";
-				console.log("this._resourse"+this._resourse);
+				console.log("this._resourse  ="+this._resourse);
 				//图片路径
 				arrow.src = this._resourse; //this.resourse
-				
+				//console.log("arrow.src "+arrow.src );
 				arrow.width = randomsize;
 				arrow.height = randomsize;
 				arrow.style.bottom = "0px";
@@ -170,6 +170,8 @@
 					
 					//console.log("this._nid =" + _nid);
 					item.set('MAPUSER', _nid);
+					item.set('UserIcon',arrow.src);
+					
 					clicked("../html/game.html");
 		
 					//console.log("arrow.width = "+arrow.width+" arrow.height = "+arrow.height);
