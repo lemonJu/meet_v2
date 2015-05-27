@@ -67,9 +67,12 @@ document.addEventListener("plusready", function() {
 		if (text === "") {
 			alert('不能发送空消息');
 		} else {
+			var date = new Date();
 			var templ = '<div class="chat_row_me">' +
 				'<div class="porel">' +
-				'<span class="date">12:20</span>' +
+				'<span class="date">'+
+					date.getHours() +":" + date.getMinutes() +":" +date.getSeconds()
+				+'</span>' +
 				'<span class="head_img_me">' +
 				'<img src="'+myInfo['photo']+'" alt=""/>' + //  此处需要头像图片
 				'</span>' +
