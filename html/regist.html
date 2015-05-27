@@ -74,9 +74,7 @@
 				document.addEventListener("plusready", plusReady, false);
 			}
 			$(function(){
-//				var url = REMOTEURL + "/getRegisterImg?uid="+item.get('uid');
-
-				var url = "http://113.251.174.102:3000/getRegisterImg?uid="+item.get('uid');
+				var url = REMOTEURL + "/getRegisterImg?uid="+item.get('uid');
 				ajax(url,null,function(e){
 					console.log(e)
 //							var path = plus.io.convertLocalFileSystemURL(xhr.responseText)
@@ -86,23 +84,6 @@
 							$('#img').width(w);
 							$('#img').height(h);
 				},null,'GET')
-//				var xhr = null;
-//				var url = REMOTEURL + "/getRegisterImg";
-//				xhr = new XMLHttpRequest();
-//				xhr.onreadystatechange = function() {
-//					if (xhr.readyState == 4 && xhr.status == 200) {
-//						console.log(xhr.responseText);
-//						if(xhr.responseText!=''){
-//							var path = plus.io.convertLocalFileSystemURL(xhr.responseText)
-//							$('#img').src = path;
-//						}else{
-//							console.log('meiyou')
-//						}
-//					}
-//				}
-//				xhr.open("GET", url);
-//		
-//				xhr.send();
 				
 			})
 			function plusReady() {
