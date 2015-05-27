@@ -51,6 +51,7 @@ document.addEventListener("plusready", function() {
 	// 联系人点击跳转到聊天界面
 	$("#friends_box").on("tap", ".friends", function() {
 		var name = $(this).find(".name").html();
+		//console.log(name)
 		connecting[name] = {
 			src: $(this).find("img").first().attr("src"),
 			note: $(this).find(".qianming").html()
@@ -86,7 +87,6 @@ document.addEventListener("plusready", function() {
 
 
 	$("#chat_box").on("tap", ".del", function() {
-		console.log($(this).parents('.friends')[0])
 		$(this).parents('.friends').remove();
 		return false;
 	});
@@ -96,7 +96,7 @@ document.addEventListener("plusready", function() {
 		var temp = '';
 		for (var name in connecting) {
 			var watchedStr = !!watched[name] ? "watched" : "";
-			temp = '<div class="friends clearfix ' + watchedStr + '">\
+			temp += '<div class="friends clearfix ' + watchedStr + '">\
 	    			<div class="name_wrap">\
 	    				<div class="name_box">\
 		    				<div class="name">' + name + '</div>\
