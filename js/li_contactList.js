@@ -8,42 +8,46 @@ document.addEventListener("plusready", function() {
 		$(".tool_bar").removeClass('active');
 		$(this).addClass('active');
 	});
-	
-	$("#friends_bar").tap(function() {
-		ajax(REMOTEURL + '/friendsGet', null, function(obj){
-			var html = '';
-			var people = JSON.parse(obj);
-			people.forEach(function(person) {
+
+	ajax(REMOTEURL + '/friendsGet', null, function(obj) {
+		var html = '';
+		var people = JSON.parse(obj);
+		people.forEach(function(person) {
+			userPhotoes[person.nickname_friend] = person.photo;
 			person.note = person.note || "暂无签名"
-				html += '\
+			html += '\
 				<div class="friends clearfix">\
 	    			<div class="name_wrap">\
 	    				<div class="name_box">\
-		    				<div class="name">'+person.nickname_friend+'</div>\
-		    				<div class="qianming">'+person.note+'</div>\
+		    				<div class="name">' + person.nickname_friend + '</div>\
+		    				<div class="qianming">' + person.note + '</div>\
 		    			</div>\
 	    			</div>\
 	    			<div class="head_imgbox">\
-	    				<img src="img/head_img.png" alt="touxiang" width="100%" height="100%"/>\
+	    				<img src="' + person.photo + '" alt="touxiang" width="100%" height="100%"/>\
 	    			</div>\
 	    			<div class="turn_left">\
 	    				<i style="line-height: 60px;font-size:1.6em;" class="fa fa-chevron-right"></i>\
 	    			</div>\
 	    		</div>';
-	    		
-	    		$("#friends_box").html(html);
-			})
-		}, null)
-	})
+
+			$("#friends_box").html(html);
+		})
+		item.set('userPhotoes', JSON.stringify(userPhotoes));
+	}, null)
+
 
 	// trigger事件触发聊天tabs
 	$(".tool_one").trigger("tap");
-	
+
+
+	var userPhotoes = {};
+
 	// 保存正在聊天的用户信息
 	var connecting = {};
 	// 消息的读取状态
 	var watched = {};
-	
+
 	// 联系人点击跳转到聊天界面
 	$("#friends_box").on("tap", ".friends", function() {
 		var name = $(this).find(".name").html();
@@ -58,10 +62,10 @@ document.addEventListener("plusready", function() {
 		item.set('friendsActive', name);
 		clicked('li_chat.html')
 	});
-	
-	
+
+
 	$("#chat_box").on("tap", ".friends", function(e) {
-	if(e.target.innerHTML == "删除") return
+		if (e.target.innerHTML == "删除") return
 		var name = $(this).find(".name").html();
 		// 显示消息成已读
 		watched[name] = true;
@@ -71,28 +75,28 @@ document.addEventListener("plusready", function() {
 		clicked('li_chat.html')
 	});
 
-	
+
 	$("#chat_box").on("swipeLeft", ".friends", function() {
 		$(this).addClass('del-now')
 	});
-	
+
 	$("#chat_box").on("swipeRight", ".friends", function() {
 		$(this).removeClass('del-now')
 	});
-	
-	
+
+
 	$("#chat_box").on("tap", ".del", function() {
 		console.log($(this).parents('.friends')[0])
 		$(this).parents('.friends').remove();
 		return false;
 	});
-	
-	
+
+
 	function addUserInfo() {
 		var temp = '';
-		for(var name in connecting) {
-			var watchedStr = !!watched[name] ? "watched": "";
-			temp= '<div class="friends clearfix '+watchedStr+'">\
+		for (var name in connecting) {
+			var watchedStr = !!watched[name] ? "watched" : "";
+			temp = '<div class="friends clearfix ' + watchedStr + '">\
 	    			<div class="name_wrap">\
 	    				<div class="name_box">\
 		    				<div class="name">' + name + '</div>\
@@ -111,10 +115,10 @@ document.addEventListener("plusready", function() {
 	    			<div class="del">删除</div>\
 	    		</div>';
 		}
-		
+
 		$("#chat_box").html(temp);
 	}
-	
+
 	function getMessage() {
 		var xhr = new XMLHttpRequest();
 
@@ -122,13 +126,14 @@ document.addEventListener("plusready", function() {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var message = JSON.parse(xhr.responseText);
-				message.forEach(function(mess) { 
+				message.forEach(function(mess) {
+
 					var temp = item.get("_$_" + mess.from) || "";
 					temp += '<div class="chat_row">\
 			    		<div class="porel">\
 			    		<span class="date">' + mess.time + '</span>\
 				    		<span class="head_img">\
-				    			<img src="'+mess.photo+'" alt=""/>\
+				    			<img src="' + mess.photo + '" alt=""/>\
 				    		</span>\
 				    		<span class="chat_content">\
 				    			<div style="position: relative;">\
@@ -137,10 +142,10 @@ document.addEventListener("plusready", function() {
 				    			</div>\
 				    		</span>\
 			    		</div>\
-			    	</div>'; 
-					item.set("_$_" + mess.from, temp); 
+			    	</div>';
+					item.set("_$_" + mess.from, temp);
 					connecting[mess.from] = {
-						src: '123',
+						src: mess.photo,
 						note: '123'
 					}
 					watched[mess.from] = false;

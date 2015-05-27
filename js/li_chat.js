@@ -62,6 +62,8 @@ document.addEventListener("plusready", function() {
 
 	$("#send").on("click", function() {
 		var text = $("#message").val();
+		console.log(item.get('myInfo'))
+		var myInfo = JSON.parse(JSON.parse(item.get('myInfo')))
 		if (text === "") {
 			alert('不能发送空消息');
 		} else {
@@ -69,7 +71,7 @@ document.addEventListener("plusready", function() {
 				'<div class="porel">' +
 				'<span class="date">12:20</span>' +
 				'<span class="head_img_me">' +
-				'<img src="" alt=""/>' + //  此处需要头像图片
+				'<img src="'+myInfo['photo']+'" alt=""/>' + //  此处需要头像图片
 				'</span>' +
 				'<span class="chat_content_me">' +
 				'<div style="position: relative;">' +
@@ -104,7 +106,7 @@ document.addEventListener("plusready", function() {
 		}
 	});
 
-
+ 
 	function getMessage() {
 		var xhr = new XMLHttpRequest();
 
@@ -112,12 +114,15 @@ document.addEventListener("plusready", function() {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var message = JSON.parse(xhr.responseText);
+				
+				var userPhotoes = JSON.parse(item.get('userPhotoes'));
+				
 				message.forEach(function(mess) {
 					var temp = '<div class="chat_row">\
 			    		<div class="porel">\
 			    		<span class="date">' + mess.time + '</span>\
 				    		<span class="head_img">\
-				    			<img src="" alt=""/>\
+				    			<img src="'+userPhotoes[mess.from]+'" alt=""/>\
 				    		</span>\
 				    		<span class="chat_content">\
 				    			<div style="position: relative;">\
