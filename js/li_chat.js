@@ -150,6 +150,7 @@ document.addEventListener("plusready", function() {
 	}
 
 	getMessage()
+	setInterval(function(){getMessage()}, 60000*5)
 
 	$(".left_back").click(function() {
 		item.set("_$_" + person, $("#chat_body").html());

@@ -155,9 +155,9 @@
 				var arrow = this._arrow = document.createElement("img");
 			
 				arrow.style.position = "absolute";
-				console.log(this._resourse);
+				console.log("this._resourse"+this._resourse);
 				//图片路径
-				arrow.src = this.photo; //this.resourse
+				arrow.src = this._resourse; //this.resourse
 				
 				arrow.width = randomsize;
 				arrow.height = randomsize;
@@ -196,7 +196,7 @@
 						sData[i].iconResourse = "demo";
 						//sData[i].user="张秀华";
 						console.log("sData = " + sData[i].user);
-						myCompOverlay = new ComplexCustomOverlay(new BMap.Point(sData[i].lng, sData[i].lat), sData[i].user,  sData[i].iconResourse);
+						myCompOverlay = new ComplexCustomOverlay(new BMap.Point(sData[i].lng, sData[i].lat), sData[i].user,sData[i].photo);
 						mp.addOverlay(myCompOverlay);
 					}
 				}
