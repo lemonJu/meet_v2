@@ -101,7 +101,7 @@ document.addEventListener("plusready", function() {
 	    			</div>\
 	    			<div class="head_imgbox">\
 	    				<div class="imgbox_inner">\
-	    					<img src="' + connecting[name].src + '" width="100%" height="100%"/>\
+	    					<img src="' + connecting[name].photo + '" width="100%" height="100%"/>\
 	    				</div>\
 	    				<div class="tips-message">...</div>\
 	    			</div>\
@@ -128,7 +128,7 @@ document.addEventListener("plusready", function() {
 			    		<div class="porel">\
 			    		<span class="date">' + mess.time + '</span>\
 				    		<span class="head_img">\
-				    			<img src="" alt=""/>\
+				    			<img src="'+mess.photo+'" alt=""/>\
 				    		</span>\
 				    		<span class="chat_content">\
 				    			<div style="position: relative;">\

@@ -1,49 +1,45 @@
 /* 样式的覆盖 */
 
-body{
+body {
 	background-color: #f3f4f8;
 }
-header{
+header {
 	background: #f3f4f8 url(../img/tongxin_header.png) no-repeat 0 0;
 	background-size: 100% 100%;
 }
-header i{
+header i {
 	color: #fff;
 }
-
-
 /* 样式定义 */
-.wrap{
-	position: absolute;
-width: 100%;
-}
-.head_row{
-	width: 100%;
-position: absolute;
-top: 60px;
-height: 6em;
-border-top: 1px solid #ccc;
-/*border-bottom: 1px solid #ccc;*/
-padding: 0.5em 0 0.5em 1em;
-}
-.img_row{
-	float: left;
-height: 100%;
-width: 5em;
-border-radius: 50%;
-overflow: hidden;
-}
-.img_row img{
-	
-}
 
-.name{
-	height: 2.6em;
-line-height: 3em;
-padding-left: 6em;
-font-weight: bold;
+.wrap {
+	position: absolute;
+	width: 100%;
 }
-.signature{
+.head_row {
+	width: 100%;
+	position: absolute;
+	top: 60px;
+	height: 6em;
+	border-top: 1px solid #ccc;
+	/*border-bottom: 1px solid #ccc;*/
+	
+	padding: 0.5em 0 0.5em 1em;
+}
+.img_row {
+	float: left;
+	height: 100%;
+	width: 5em;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.img_row img {} .name {
+	height: 2.6em;
+	line-height: 3em;
+	padding-left: 6em;
+	font-weight: bold;
+}
+.signature {
 	height: auto;
 	line-height: 1.2em;
 	padding-left: 6.9em;
@@ -57,8 +53,7 @@ font-weight: bold;
 	bottom: 2.7em;
 	text-indent: 1.4em;
 }
-
-#add_friend{
+#add_friend {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -71,19 +66,16 @@ font-weight: bold;
 	letter-spacing: 0.2em;
 	cursor: pointer;
 }
-
-.left_back{
+.left_back {
 	height: 100%;
 	width: 60px;
 	position: relative;
 	z-index: 10;
 	float: left;
 }
-.left_back i{
+.left_back i {
 	font-size: 2em;
 	font-weight: 700;
 	margin-left: 5px;
 	line-height: 50px;
 }
-
-
