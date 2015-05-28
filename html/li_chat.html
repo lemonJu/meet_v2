@@ -12,37 +12,6 @@
 	<script src="../js/li_chat.js"></script> 
 	<script src="../js/base.js"></script>
 	<script src="../js/common.js"></script>
-    <script type="text/javascript">
-	document.addEventListener( "plusready", onPlusReady, false );
-	function onPlusReady(){
-		
-	}
-	function camera(){
-		// 获取摄像头设备
-		var cmr = plus.camera.getCamera();
-		var res = cmr.supportedImageResolutions[0];
-		var fmt = cmr.supportedImageFormats[0];
-		cmr.captureImage( function( path ){
-			alert( "Capture image success: " + path );
-		},
-		function( error ) {
-			console.log( "Capture image failed: " + error.message );
-		},
-		{
-			resolution:res,
-			format:fmt
-		});
-	}
-		// 从相册中选择图片 
-		function galleryImg() {
-			// 从相册中选择图片
-		    plus.gallery.pick( function(path){
-		    	alert(path);
-		    }, function ( e ) {
-		    	console.log( "取消选择图片" );
-		    }, {filter:"image"} );
-		}
-	</script>
 </head>
 <body>
     <header class="bar bar-header">
@@ -213,7 +182,7 @@
     		<span class="camera">
     			<i class="fa fa-camera fa-2x" id="cmr"></i>
     		</span>
-    		<span class="photo" onclick="galleryImg()">
+    		<span class="photo">
     			<i class="fa fa-photo fa-2x"></i>
     		</span>
     	</div>
