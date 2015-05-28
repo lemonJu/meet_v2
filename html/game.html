@@ -68,7 +68,7 @@
         <a>解密陌生人</a>
     </header>
     <article class="clearfix content" id="fix">
-        <h1 id="score">30</h1>
+        <h1 id="score">15</h1>
         <div id="main">
             <div id="container"></div>
         </div>
@@ -89,19 +89,17 @@
     	* 初始化
     	*/
     	function init() {
+    	$('#main').tap(function (ev) {
+    			judge(ev);
+    		})
     		for(var i=0; i<4; i++) {
     			crow();
     		}
-
-    		$('#main').tap(function (ev) {
-    			judge(ev);
-    		})
-    	}
+		}
 
     	function judge(ev) {
     		if(state == 3) {
     			alert('请点击重新开始');
-    			return;
     		}
     		if(ev.target.className.indexOf('black') == -1) {
 
@@ -155,9 +153,7 @@
     	*/
     	function jiasu() {
     		speed +=2;
-    		if(speed == 20) {
-    			alert('你的电脑太卡了');
-    		}
+
     	}
 
     	/*
@@ -177,7 +173,7 @@
     		if(newscore % 5 == 0) {
     			jiasu()
     		}
-            $$('score').innerHTML = 5-newscore;
+            $$('score').innerHTML = 50-newscore;
             if($$('score').innerHTML==0){
                 success();
             }

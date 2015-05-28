@@ -199,7 +199,7 @@ document.addEventListener('plusready', function() {
 			var res = cmr.supportedImageResolutions[0];
 			var fmt = cmr.supportedImageFormats[0];
 			cmr.captureImage(function(path) {
-				console.log(path)
+					console.log(path)
 					upload(path);
 				},
 				function(error) {
@@ -220,17 +220,17 @@ document.addEventListener('plusready', function() {
 			function(t, status) { //上传完成
 				if (status == 200) {
 					console.log(t)
-//					console.log(t.responseText)
+						//					console.log(t.responseText)
 				}
 			}
 		);
 		task.addData("to", item.get('friendsActive'));
 
-			task.addFile(e, {
-				key: Math.random()
-			});
-		
-		task.start();
+		task.addFile(e, {
+			key: Math.random()
+		});
+
+		//task.start();
 	}
 
 	function galleryImg() {
@@ -268,14 +268,14 @@ document.addEventListener('plusready', function() {
 		ep = null;
 	document.addEventListener("DOMContentLoaded", function() {
 		// 获取DOM元素对象
-//		hl = document.getElementById("history");
-//		le = document.getElementById("empty");
-//		er = document.getElementById("record");
-//		rt = document.getElementById("rtime");
-//		ep = document.getElementById("play");
-//		pt = document.getElementById("ptime");
-//		pp = document.getElementById("progress")
-//		ps = document.getElementById("schedule");
+		//		hl = document.getElementById("history");
+		//		le = document.getElementById("empty");
+		//		er = document.getElementById("record");
+		//		rt = document.getElementById("rtime");
+		//		ep = document.getElementById("play");
+		//		pt = document.getElementById("ptime");
+		//		pp = document.getElementById("progress")
+		//		ps = document.getElementById("schedule");
 	}, false);
 	// 添加播放项
 	var a = {}
