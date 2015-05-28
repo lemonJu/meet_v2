@@ -152,9 +152,9 @@ document.addEventListener('plusready', function() {
 				    		</div>\
 				    	</div>';
 					} else if (mess.type == 2) {
-						var temp = '<div class="chat_row audioPlay palyvvv">' + '<div class="porel">' + '<span class="date">12:20</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">00:04</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
+						var temp = '<div class="chat_row audioPlay palyvvv">' + '<div class="porel">' + '<span class="date">'+mess.time+'</span>' + '<span class="head_img_me">' + '<img src="' + userPhotoes[mess.from] + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">'+mess.time+'</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
 					} else if (mess.type == 3) {
-						var temp = '<div class="chat_row imgBox">' + '<div class="porel">' + '<span class="date">12:20</span>' + '<span class="head_img">' + '<img src="../img/icon.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_img">' + '<div style="position: relative;">' + '<i class="arrow_img"></i>' + '<span class="send_image">' + '<img src="'+mess.content+'" width="100%" height="100%" alt="send"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>'
+						var temp = '<div class="chat_row imgBox">' + '<div class="porel">' + '<span class="date">'+mess.time+'</span>' + '<span class="head_img">' + '<img src="' + userPhotoes[mess.from] + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_img">' + '<div style="position: relative;">' + '<i class="arrow_img"></i>' + '<span class="send_image">' + '<img src="' + mess.content + '" width="100%" height="100%" alt="send"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>'
 					}
 					$("#chat_body").append(temp)
 				})
@@ -195,6 +195,7 @@ document.addEventListener('plusready', function() {
 		onOff = false;
 		galleryImg();
 	});
+
 	function camera() {
 			// 获取摄像头设备
 			var cmr = plus.camera.getCamera();
@@ -222,27 +223,8 @@ document.addEventListener('plusready', function() {
 			function(t, status) { //上传完成
 				if (status == 200) {
 					var res = t.responseText
-						var temp = '<div class="chat_row_me imgBox">'
-    		+'<div class="porel">'
-    			+'<span class="date">12:20</span>'
-	    		+'<span class="head_img_me">'
-	    			+'<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>'
-	    		+'</span>'
-	    		+'<span class="chat_content_me_img pull-right">'
-	    			+'<div style="position: relative;">'
-		    			+'<i class="arrow_me_img"></i>'
-		    			+'<span class="send_image">'
-		    				+'<img src="'+res+'" alt="send" class="img"/>'
-		    			+'</span>'
-	    			+'</div>'
-	    		+'</span>'
-    		+'</div>'
-    	+'</div>';
+					var temp = '<div class="chat_row_me imgBox">' + '<div class="porel">' + '<span class="date">12:20</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me_img pull-right">' + '<div style="position: relative;">' + '<i class="arrow_me_img"></i>' + '<span class="send_image">' + '<img src="' + res + '" alt="send" class="img"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
 					$("#chat_body").append(temp)
-
-					console.log(t)
-						//					console.log(t.responseText)
-
 				}
 			}
 		);
@@ -252,7 +234,7 @@ document.addEventListener('plusready', function() {
 			key: Math.random()
 		});
 
-		//task.start();
+		task.start();
 	}
 
 	function galleryImg() {
@@ -296,7 +278,7 @@ document.addEventListener('plusready', function() {
 	var r = null,
 		t = 0,
 		ri = null,
-		rt = null
+		rt = null;
 
 	function startRecord() {
 			console.log("开始录音：");
