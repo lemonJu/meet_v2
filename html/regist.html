@@ -99,7 +99,8 @@
 				})
 			}
 			function xhrCreate() {
-				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val();
+				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val()+"&uid="+item.get('uid');
+				console.log(item.get('uid'))
 				var url = REMOTEURL + "/logup";
 				xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
