@@ -201,7 +201,7 @@ document.addEventListener('plusready', function() {
 			var res = cmr.supportedImageResolutions[0];
 			var fmt = cmr.supportedImageFormats[0];
 			cmr.captureImage(function(path) {
-				console.log(path)
+					console.log(path)
 					upload(path);
 				},
 				function(error) {
@@ -221,6 +221,7 @@ document.addEventListener('plusready', function() {
 			},
 			function(t, status) { //上传完成
 				if (status == 200) {
+<<<<<<< HEAD
 					var res = t.responseText
 						var temp = '<div class="chat_row_me imgBox">'
     		+'<div class="porel">'
@@ -239,16 +240,20 @@ document.addEventListener('plusready', function() {
     		+'</div>'
     	+'</div>';
 					$("#chat_body").append(temp)
+=======
+					console.log(t)
+						//					console.log(t.responseText)
+>>>>>>> 501dbe3f489767949b1cb396fa922aa084c24b63
 				}
 			}
 		);
 		task.addData("to", item.get('friendsActive'))
 
-			task.addFile(e, {
-				key: Math.random()
-			});
-		
-		task.start();
+		task.addFile(e, {
+			key: Math.random()
+		});
+
+		//task.start();
 	}
 
 	function galleryImg() {
@@ -286,6 +291,7 @@ document.addEventListener('plusready', function() {
 		ep = null;
 	document.addEventListener("DOMContentLoaded", function() {
 		// 获取DOM元素对象
+<<<<<<< HEAD
 		hl = document.getElementById("history");
 		le = document.getElementById("empty");
 		er = document.getElementById("record");
@@ -294,6 +300,16 @@ document.addEventListener('plusready', function() {
 		pt = document.getElementById("ptime");
 		pp = document.getElementById("progress")
 		ps = document.getElementById("schedule");
+=======
+		//		hl = document.getElementById("history");
+		//		le = document.getElementById("empty");
+		//		er = document.getElementById("record");
+		//		rt = document.getElementById("rtime");
+		//		ep = document.getElementById("play");
+		//		pt = document.getElementById("ptime");
+		//		pp = document.getElementById("progress")
+		//		ps = document.getElementById("schedule");
+>>>>>>> 501dbe3f489767949b1cb396fa922aa084c24b63
 	}, false);
 	// 添加播放项
 	var a = {}

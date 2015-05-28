@@ -82,7 +82,6 @@
 					if (xhr.readyState == 4 && xhr.status == 200) {
 						if(xhr.responseText!='fail'){
 							item.set('myInfo', JSON.stringify(xhr.responseText));
-							console.log(item.get('myInfo'))
 							clicked('contactList.html')
 						}else{
 							alert('用户名或密码错误')

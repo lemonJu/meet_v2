@@ -16,7 +16,26 @@ header i {
 	display: none !important;
 }
 /* body css start */
-
+.my{
+	margin: 10px;
+}
+.row{
+	height: 2.6em;
+	line-height: 2.6em;
+	border-bottom: 1px solid #ddd;
+}
+.row > .pull-right{
+	color :#777;
+	font-size: .9em;
+}
+.my-photo{
+	height: 5em;
+	width: 5em;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	border-radius: 50%;
+}
 #body {
 	height: calc(100% - 100px);
 	width: 100%;

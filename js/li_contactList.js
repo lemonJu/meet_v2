@@ -181,9 +181,15 @@ document.addEventListener("plusready", function() {
 		getMessage()
 	}, 60000 * 5)
 	var myInfo = JSON.parse(JSON.parse(item.get("myInfo")));
-	console.log(JSON.stringify(myInfo))
-	$("#my-name").html(myInfo.nickname);
-	$("#my-photo").attr("src", myInfo.photo)
+	var my = $("#my");
+	for(var me in myInfo) {
+		if(me == 'photo'){console.log(myInfo[me])
+			$("#my-" + me).attr("src", myInfo[me]);
+		}else{
+			$("#my-" + me).html(myInfo[me]);
+		}
+			
+	}
 }, false);
 
 
