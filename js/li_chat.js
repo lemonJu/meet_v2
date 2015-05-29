@@ -30,8 +30,7 @@ document.addEventListener('plusready', function() {
 			stopRecord();
 			//	$("#send").css("display", "block");
 			updateauo(a);
-			$(".porel").tap(function() {
-				alert(1)
+			$("#chat_body").tap(function() {
 				startPlay(window.a);
 			})
 		}
@@ -150,7 +149,7 @@ document.addEventListener('plusready', function() {
 				    		</div>\
 				    	</div>';
 					} else if (mess.type == 2) {
-						var temp = '<div class="chat_row audioPlay palyvvv">' + '<div class="porel">' + '<span class="date">'+mess.time+'</span>' + '<span class="head_img_me">' + '<img src="' + userPhotoes[mess.from] + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">'+mess.time+'</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
+						var temp = '<div class="chat_row audioPlay palyvvv">' + '<div class="porel">' + '<span class="date">'+mess.time+'</span>' + '<span class="head_img_me">' + '<img src="' + content + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">'+mess.time+'</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
 					} else if (mess.type == 3) {
 						var temp = '<div class="chat_row imgBox">' + '<div class="porel">' + '<span class="date">'+mess.time+'</span>' + '<span class="head_img">' + '<img src="' + userPhotoes[mess.from] + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_img">' + '<div style="position: relative;">' + '<i class="arrow_img"></i>' + '<span class="send_image">' + '<img src="' + mess.content + '" width="100%" height="100%" alt="send"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>'
 					}
@@ -184,13 +183,10 @@ document.addEventListener('plusready', function() {
 		}
 	});
 	// 此处给添加摄像头，与相册的设置
-	var onOff = null;
 	$camera.on("click", function() {
-		onOff = true;
 		camera();
 	});
 	$photo.on("click", function() {
-		onOff = false;
 		galleryImg();
 	});
 
@@ -277,7 +273,7 @@ document.addEventListener('plusready', function() {
 		t = 0,
 		ri = null,
 		rt = null;
-
+		window.t = 0;
 	function startRecord() {
 			console.log("开始录音：");
 			r = plus.audio.getRecorder();
@@ -294,19 +290,20 @@ document.addEventListener('plusready', function() {
 			}, function(e) {
 				console.log("录音失败：" + e.message);
 			});
-
+			ri = setInterval(function(){
+				window.t++;
+			},1000)
 		}
 		// 停止录音
 
 	function stopRecord() {
-			$("#record").hide()
-			$(".rtime").text("00:00:00")
+
 			clearInterval(ri);
 			ri = null;
 			r.stop();
 			w = null;
 			r = null;
-			t = 0;
+			
 		}
 		// 清除历史记录
 		// 播放音频文件
@@ -330,8 +327,9 @@ document.addEventListener('plusready', function() {
 					if(res.indexOf("undefined")==-1){ 
 						var date = new Date();
 						console.log(res);
-						var vdo = '<div class="chat_row_me audioPlay">' + '<div class="porel">' + '<span class="date">'+date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()+'</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">00:04</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
+						var vdo = '<div class="chat_row_me audioPlay">' + '<div class="porel">' + '<span class="date">'+date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()+'</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">'+window.t+'秒</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
 						$("#chat_body").append(vdo);
+						window.t = 0;
 					}
 				}
 			}
@@ -342,6 +340,7 @@ document.addEventListener('plusready', function() {
 		});
 		task.start();
 	}
+	
 	var p = null,
 		pt = null,
 		pp = null,
@@ -349,7 +348,6 @@ document.addEventListener('plusready', function() {
 		pi = null;
 	// 开始播放
 	function startPlay(url) {
-		alert(url)
 			p = plus.audio.createPlayer(url);
 			p.play(function() {
 				console.log("播放完成！");
@@ -358,23 +356,4 @@ document.addEventListener('plusready', function() {
 			});
 		}
 		// 停止播放
-
-	function stopPlay() {
-			clearInterval(pi);
-			pi = null;
-			setTimeout(resetPlay, 500);
-			// 操作播放对象
-			if (p) {
-				p.stop();
-				p = null;
-			}
-		}
-		// 重置播放页面内容
-
-	function resetPlay() {
-		ep.style.display = "none";
-		ps.style.width = "8px";
-		ps.style.webkitTransition = "all 1s linear";
-		pt.innerText = "00:00:00/00:00:00";
-	}
 }, false)

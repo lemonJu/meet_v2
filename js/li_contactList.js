@@ -98,13 +98,11 @@ document.addEventListener("plusready", function() {
 	$("#chat_box").on("swipeRight", ".friends", function() {
 		$(this).removeClass('del-now')
 	});
-
-
+	
 	$("#chat_box").on("tap", ".del", function() {
 		$(this).parents('.friends').remove();
 		return false;
 	});
-
 
 	function addUserInfo() {
 		var temp = '';
