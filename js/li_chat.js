@@ -31,6 +31,7 @@ document.addEventListener('plusready', function() {
 			//	$("#send").css("display", "block");
 			updateauo(a);
 			$(".porel").tap(function() {
+				alert(1)
 				startPlay(window.a);
 			})
 		}
