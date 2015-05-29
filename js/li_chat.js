@@ -29,12 +29,9 @@ document.addEventListener('plusready', function() {
 	$('.button_box').get(0).ontouchend = function() {
 			stopRecord();
 			//	$("#send").css("display", "block");
-			var vdo = '<div class="chat_row_me audioPlay palyvvv">' + '<div class="porel">' + '<span class="date">12:20</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">00:04</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
-			$("#chat_body").append(vdo);
 			updateauo(a);
-			$(".playvvv").tap(function() {
-				alert(11)
-				playAudio(a);
+			$(".porel").tap(function() {
+				startPlay(a);
 			})
 		}
 		// 消息处理
@@ -112,7 +109,7 @@ document.addEventListener('plusready', function() {
 			var xhr = new XMLHttpRequest();
 
 
-			var url = 'http://reloney123.oicp.net:3000/chatSend?' + 'to=' + person + '&content=' + text;
+			var url = REMOTEURL+'/chatSend?' + 'to=' + person + '&content=' + text;
 
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
@@ -128,7 +125,7 @@ document.addEventListener('plusready', function() {
 	function getMessage() {
 		var xhr = new XMLHttpRequest();
 
-		var url = 'http://reloney123.oicp.net:3000/chatGet';
+		var url = REMOTEURL+'/chatGet';
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				var message = JSON.parse(xhr.responseText);
@@ -215,7 +212,7 @@ document.addEventListener('plusready', function() {
 		// 从相册中选择图片 
 
 	function upload(e) {
-		console.log("photouoload")
+
 		var server = REMOTEURL + '/chatSendPhoto';
 		var task = plus.uploader.createUpload(server, {
 				method: "POST"
@@ -223,8 +220,9 @@ document.addEventListener('plusready', function() {
 			function(t, status) { //上传完成
 				if (status == 200) {
 					var res = t.responseText
-					var temp = '<div class="chat_row_me imgBox">' + '<div class="porel">' + '<span class="date">12:20</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me_img pull-right">' + '<div style="position: relative;">' + '<i class="arrow_me_img"></i>' + '<span class="send_image">' + '<img src="' + res + '" alt="send" class="img"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
-					$("#chat_body").append(temp)
+					var date = new Date();
+					var temp = '<div class="chat_row_me imgBox">' + '<div class="porel">' + '<span class="date">'+date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()+'</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me_img pull-right">' + '<div style="position: relative;">' + '<i class="arrow_me_img"></i>' + '<span class="send_image">' + '<img src="' + res + '" alt="send" class="img"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
+					$("#chat_body").append(temp);
 				}
 			}
 		);
@@ -274,7 +272,7 @@ document.addEventListener('plusready', function() {
 		// 获取DOM元素对象
 	}, false);
 	// 添加播放项
-	var a = {}
+	var a="";
 	var r = null,
 		t = 0,
 		ri = null,
@@ -291,11 +289,7 @@ document.addEventListener('plusready', function() {
 				filename: "_doc/audio/"
 			}, function(p) {
 				console.log("录音完成：" + p);
-				plus.io.resolveLocalFileSystemURL(p, function(entry) {
-					a = entry;
-				}, function(e) {
-					console.log("读取录音文件错误：" + e.message);
-				});
+				updateauo(p);
 			}, function(e) {
 				console.log("录音失败：" + e.message);
 			});
@@ -326,20 +320,24 @@ document.addEventListener('plusready', function() {
 	}
 
 	function updateauo(f) {
-		console.log("kaishi");
 		var server = REMOTEURL + '/chatSendSound';
 		var task = plus.uploader.createUpload(server, {
 				method: "POST"
-			},
-			function(t, status) { //上传完成
-				console.log(status)
+			},function(t, status) { //上传完成
 				if (status == 200) {
-					alert("success")
+//					console.log(t.responseText)
+           			var res = t.responseText;
+					if(res.indexOf("undefined")==-1){ 
+						var date = new Date();
+						console.log(res);
+						var vdo = '<div class="chat_row_me audioPlay">' + '<div class="porel">' + '<span class="date">'+date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()+'</span>' + '<span class="head_img_me">' + '<img src="../img/head_img.png" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_me">' + '<div style="position: relative;">' + '<i class="arrow_me"></i>' + '<span class="audio_me">' + '<i class="fa fa-file-audio-o"></i>' + '<span class="audiotime_me">00:04</span>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>';
+						$("#chat_body").append(vdo);
+					}
 				}
 			}
 		);
 		task.addData("to", item.get('friendsActive'));
-		task.addFile("_doc/audio/" + f.name, {
+		task.addFile(f, {
 			key: Math.random()
 		});
 		task.start();
@@ -351,36 +349,13 @@ document.addEventListener('plusready', function() {
 		pi = null;
 	// 开始播放
 	function startPlay(url) {
+		alert(url)
 			p = plus.audio.createPlayer(url);
 			p.play(function() {
 				console.log("播放完成！");
-				// 播放完成
-				pt.innerText = timeToStr(d) + "/" + timeToStr(d);
-				ps.style.webkitTransition = "all 0.3s linear";
-				ps.style.width = L + "px";
-				stopPlay();
 			}, function(e) {
 				console.log("播放音频文件\"" + url + "\"失败：" + e.message);
 			});
-			// 获取总时长
-			var d = p.getDuration();
-			if (!d) {
-				pt.innerText = "00:00:00/" + timeToStr(d);
-			}
-			pi = setInterval(function() {
-				if (!d) { // 兼容无法及时获取总时长的情况
-					d = p.getDuration();
-				}
-				var c = p.getPosition();
-				if (!c) { // 兼容无法及时获取当前播放位置的情况
-					return;
-				}
-				var pct = Math.round(L * c / d);
-				if (pct < 8) {
-					pct = 8;
-				}
-				ps.style.width = pct + "px";
-			}, 1000);
 		}
 		// 停止播放
 
