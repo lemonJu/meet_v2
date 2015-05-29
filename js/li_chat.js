@@ -1,6 +1,6 @@
 document.addEventListener('plusready', function() {
 	var person = item.get('friendsActive');
-
+	window.a = "";
 	$(".title").html(person);
 	//console.log(item.get("_$_" + person))
 	$("#chat_body").append(item.get("_$_" + person) || "");
@@ -31,7 +31,7 @@ document.addEventListener('plusready', function() {
 			//	$("#send").css("display", "block");
 			updateauo(a);
 			$(".porel").tap(function() {
-				startPlay(a);
+				startPlay(window.a);
 			})
 		}
 		// 消息处理
@@ -231,7 +231,6 @@ document.addEventListener('plusready', function() {
 		task.addFile(e, {
 			key: Math.random()
 		});
-
 		task.start();
 	}
 
@@ -289,6 +288,7 @@ document.addEventListener('plusready', function() {
 				filename: "_doc/audio/"
 			}, function(p) {
 				console.log("录音完成：" + p);
+				window.a = p;
 				updateauo(p);
 			}, function(e) {
 				console.log("录音失败：" + e.message);
@@ -325,7 +325,6 @@ document.addEventListener('plusready', function() {
 				method: "POST"
 			},function(t, status) { //上传完成
 				if (status == 200) {
-//					console.log(t.responseText)
            			var res = t.responseText;
 					if(res.indexOf("undefined")==-1){ 
 						var date = new Date();
