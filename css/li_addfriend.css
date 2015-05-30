@@ -83,3 +83,378 @@ header i {
 	margin-left: 5px;
 	line-height: 50px;
 }
+
+/* 样式的覆盖 */
+
+body{
+	background-color: #f3f4f8;
+}
+header{
+	background: #f3f4f8 url(../img/tongxin_header.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+header i{
+	color: #fff;
+}
+
+
+/* 重定义样式 */
+.left_back{
+	position: relative;
+/* width: 100%; */
+float: left;
+height: 100%;
+line-height: 50px;
+color: #fff;
+margin-left: 0.3em;
+}
+.left_back i{
+	padding: 0 0.4em 0 0.1em;
+float: left;
+line-height: 50px;
+}
+.left_back .message{
+	float: left;
+line-height: 50px;
+}
+.right_linkman{
+	position: relative;
+}
+.right_linkman i{
+	position: absolute;
+right: 1em;
+line-height: 50px;
+}
+
+
+/* footer 样式 */
+.footer_box{
+	height: 40px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.icon_box{
+	height: 100%;
+line-height: 50px;
+position: relative;
+}
+.main{
+	position: absolute;
+left: 4em;
+right: 4em;
+top: 0.3em;
+}
+.icon{
+	color: #ababab;
+}
+.sound{
+	position: absolute;
+left: 0;
+top: 0;
+width: 4em;
+text-align: center;
+}
+.sound span{
+	
+}
+.sound span i{
+	
+}
+.input_box{
+	
+}
+.input_box span{
+	
+}
+.input_box span textarea{
+	resize: none;
+border: 1px solid #d4d0d0;
+border-radius: 6px;
+outline: none;
+width: 100%;
+font-family: inherit;
+font-size: 1.1em;
+padding-left: 0.5em;
+padding-top: 0.25em;
+height: 30px;
+/*display: none;*/
+}
+.button_box{
+	display: none;
+}
+#voice{
+	width: 100%;
+height: 2em;
+position: absolute;
+color: #caa;
+top: 0.2em;
+border-radius: 0.7em;
+outline: none;
+}
+
+/*.smeil{
+	position: absolute;
+right: 3em;
+width: 3em;
+text-align: center;
+top: 0;
+}*/
+
+.send_box{
+	position: absolute;
+	right: 0em;
+	width: 4em;
+	top: 0;
+}
+.plus{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: inline-block;
+	/*display: none;*/
+}
+
+#send{
+	display: inline-block;
+	height: 2.2em;
+	line-height: 2em;
+	position: absolute;
+	padding: 0 0.8em;
+	background: #9F7FFE;
+	top: 0.5em;
+	left: 0.3em;
+	color: #fff;
+	border-radius: 0.7em;
+	font-size: 0.9em;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	text-align: center;
+	display: none;
+}
+
+.bar-header .fa-angle-left,
+.bar-header .fa-user{
+	font-size: 1.4em;
+}
+
+
+
+/* chat body */
+.chat_body{
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	bottom: 40px;
+	overflow: auto;
+	border-top: 1px solid #ddf;
+}
+
+.chat_row{
+	padding: 0.3em 0.5em;
+	position: relative;
+	padding-left: 1em;
+}
+.date{
+	display: block;
+text-align: center;
+font-size: 0.7em;
+width: 100%;
+padding-top: 0.6em;
+color: #777;
+}
+.head_img{
+	display: inline-block;
+width: 2.5em;
+height: 2.5em;
+border-radius: 50%;
+border: 1px solid #ccc;
+float: left;
+overflow: hidden;
+}
+.head_img img{
+	
+}
+.chat_content{
+	float: left;
+/* max-width: 79%; */
+max-width: 60%;
+min-height: 2em;
+padding: 0.3em 1em;
+background: #fff;
+line-height: 1.25em;
+border-radius: 0.6em;
+margin-left: 1.5em;
+margin-top: 0.2em;
+}
+.arrow,
+.arrow_img{
+	background: transparent url(../img/arrow_write.png) no-repeat 0 0;
+background-size: 100% 100%;
+width: 1.2em;
+display: inline-block;
+height: 0.6em;
+position: absolute;
+}
+.arrow{
+	left: -1.9em;
+	top: 0;
+}
+.porel{
+	position: relative;
+	overflow: hidden;
+}
+
+
+.chat_row_me{
+	padding: 0.3em 0.5em;
+position: relative;
+padding-right: 1em;
+}
+.head_img_me{
+	display: inline-block;
+width: 2.5em;
+height: 2.5em;
+border-radius: 50%;
+border: 1px solid #ccc;
+float: right;
+overflow: hidden;
+}
+.chat_content_me{
+	max-width: 60%;
+padding: 0.3em 1em;
+}
+.chat_content_me,
+.chat_content_me_img{
+	float: right;
+	/*min-height: 2em;*/
+	background: #8dd6f3;
+	line-height: 1.25em;
+	border-radius: 0.6em;
+	margin-right: 1.5em;
+	margin-top: 0.2em;
+}
+.arrow_me{
+	right: -1.9em;
+	top: 0;
+}
+.arrow_me,
+.arrow_me_img{
+	background: transparent url(../img/arrow.png) no-repeat 0 0;
+	background-size: 100% 100%;
+	width: 1.2em;
+	display: inline-block;
+	height: 0.6em;
+	position: absolute;
+}
+
+/* othor option choose css */
+.option_box{
+	width: 100%;
+	padding: 0.5em 0;
+	background: #f3f4f8;
+}
+.camera{
+	margin: 0 0.5em 0 1em;
+}
+.camera,
+.photo{
+	display: inline-block;
+	width: 3em;
+	height: 3.3em;
+	text-align: center;
+	line-height: 4em;
+	background: #ccc;
+	color: #fff;
+}
+
+.audio i,
+.audio_me i{
+	font-size: 1.4em;
+}
+.audio i{
+	color: #8dd6f3;
+	padding: 0 3em 0 0.5em;
+}
+.audiotime,
+.audiotime_me{
+	position: absolute;
+	color: #777;
+	font-size: 0.8em;
+	line-height: 2em;
+}
+.audiotime{
+	left: 4.5em;
+top: 0em;
+}
+.audio_me i{
+	color: #fff;
+	padding: 0 0.5em 0 3em;
+}
+.audiotime_me{
+	left: 1em;
+top: 0;
+}
+img{
+	border: none;
+	outline: 0 none;
+}
+.chat_content_img{
+	float: left;
+	width: 35%;
+	/*min-height: 9em;*/
+	padding: 0em 0.4em;
+	background: #fff;
+	line-height: 1.25em;
+	border-radius: 0.6em;
+	margin-left: 1.5em;
+	margin-top: 0.2em;
+}
+.send_image{
+	display: block;
+	width: 100%;
+	padding: 0.4em 0em;
+	height: 9em;
+}
+.arrow_img{
+	left: -1.3em;
+top: 0.3em;
+}
+.send_image img{
+	display: block;
+border-radius: 10px;
+width: 100%;
+height: 100%;
+}
+.send_image_me{
+	
+}
+.chat_content_me_img{
+	width: 35%;
+padding: 0em 0.4em;
+}
+.arrow_me_img{
+right: -1.3em;
+top: 0.2em;
+}
+.dialog{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	display:none;
+	z-index: 9999;
+}
+
+
+
+
+
+
+
+
+

@@ -63,7 +63,7 @@
 
 <body>
     <header class="bar-header">
-        <div class="back" onclick="back()"><i class="fa fa-chevron-left" onclick="back()"></i>
+        <div class="back" ontap="back()"><i class="fa fa-chevron-left" ontap="back()"></i>
         </div>
         <a>解密陌生人</a>
     </header>
@@ -96,10 +96,15 @@
     			crow();
     		}
 		}
+    	
+    	var isTap = false;
 
     	function judge(ev) {
     		if(state == 3) {
-    			alert('请点击重新开始');
+    			if(!isTap) {
+    				alert('请点击重新开始');
+    				isTap = true;
+    			}
     		}
     		if(ev.target.className.indexOf('black') == -1) {
 
@@ -173,7 +178,7 @@
     		if(newscore % 5 == 0) {
     			jiasu()
     		}
-            $$('score').innerHTML = 50-newscore;
+            $$('score').innerHTML = 10-newscore;
             if($$('score').innerHTML==0){
                 success();
             }
@@ -227,7 +232,7 @@
     		arr[i] = 'cell black';
 
     		return arr; 
-    	}
+    	} 
 
     	/*
     	* 按id获取对象
@@ -240,7 +245,7 @@
     	start();
 
         $('#restart').tap(function(){
-          window.location.reload()
+        	window.location.reload()
         })
 
 		function success() {

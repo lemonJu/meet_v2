@@ -56,6 +56,7 @@
 				var fix = document.getElementById('fix');
 				var xhr = null;
 				$('.login').tap(function() {
+					console.log(1)
 					xhrCreate();
 				})
 				$('.regist').tap(function(){
@@ -75,13 +76,17 @@
 			
 
 			function xhrCreate() {
+		
 				var url = REMOTEURL+"/login?username=" + $('.une').val() + "&password=" + $('.psw').val()
+				console.log(url)
 				xhr = new XMLHttpRequest();
 				
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) {
+						console.log(xhr.responseText)
 						if(xhr.responseText!='fail'){
 							item.set('myInfo', JSON.stringify(xhr.responseText));
+							console.log('success')
 							clicked('contactList.html')
 						}else{
 							alert('用户名或密码错误')

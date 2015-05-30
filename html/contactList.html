@@ -40,7 +40,7 @@
 	    		</span>
 	    	</div>-->
 	    	<!-- 查找框 结束 -->
-	    	
+	    		
 	    	<!--  friends box start   通讯录-->
 	    	<div id="friends_box" class="tabs">
 	    		<a onclick="clicked('shake.html')" class="link info_link">
@@ -48,14 +48,13 @@
 	    		</a>
 	    	</div>
 	    	<!--  friends box end  通讯录 -->
-	    	
+	    		
 	    	<!-- chat box start 聊天 -->
 	    	<div id="chat_box" class="tabs">
 	    		
-	    		
 	    	</div>
 	    	<!-- chat box end 聊天 -->
-	    	
+	    		
 	    	<!-- shake box start 摇一摇 -->
 	    	<div id="shake_box" class="tabs">
 	    		<a onclick="clicked('shake.html')" class="link">
@@ -94,7 +93,6 @@
 	    	<!-- my message box end 个人信息 -->
 	    	
     	</div>
-    	
     	<footer class="bar bar-footer">
     		<div class="tool_box">
     			<div class="tool_bar tool_one" data-id="#chat_box" data-desp="聊天">
@@ -115,5 +113,66 @@
     			</div>
     		</div>
     	</footer>
+    	<div class="dialog">
+    	<header class="bar bar-header">
+    	
+        <h1 class="title">正在聊天de人</h1>
+        <div class="left_back">
+    		<i class="fa fa-angle-left"></i>
+    		<span class="message">消息</span>
+    	</div>
+        <div class="right_linkman">
+        	<i class="fa fa-user"></i>
+        </div>
+    </header>
+    <!-- 聊天体 -->
+    <div class="chat_body" id="chat_body">
+    </div>
+    <footer class="bar bar-footer footer_box">
+    	
+    	<div class="icon_box">
+	   		<!-- 文本域框 -->
+	   		<div class="main">
+		   		<span class="input_box">
+		   			<span>
+			   			<textarea id="message" name="message" placeholder="请输入发送文本..." rows="" cols=""></textarea>
+		   			</span>
+		   		</span>
+		   		<span class="button_box">
+		   			<button id="voice">按住说话</button>
+		   		</span>
+	   		</div>
+	   		<!-- 图标 -->
+	   		<span class="icon sound">
+	   			<span>
+		   			<i id="change_class" class="fa fa-google-wallet fa-2x"></i>
+	   			</span>
+	   		</span>
+	   		
+	   		<span class="send_box">
+	   			<span class="icon plus">
+		   			<span>
+			   			<i class="fa fa-plus-circle fa-2x"></i>
+		   			</span>
+		   		</span>
+		   		
+		   		<span id="send">
+		   			发送
+		   		</span>
+	   		</span>
+	   		
+    	</div>
+    	
+    	<!-- ohter option -->
+    	<div class="option_box">
+    		<span class="camera">
+    			<i class="fa fa-camera fa-2x" id="cmr"></i>
+    		</span>
+    		<span class="photo">
+    			<i class="fa fa-photo fa-2x"></i>
+    		</span>
+    	</div>
+    </footer>
+    </div>
 	</body>
 </html>

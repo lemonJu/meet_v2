@@ -242,7 +242,7 @@ document.addEventListener('plusready', function() {
 		});
 	}
 
-
+  
 
 	setInterval(function() {
 		getMessage()
