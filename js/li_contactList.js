@@ -109,7 +109,7 @@ document.addEventListener("plusready", function() {
 
 	function addUserInfo() {
 		var temp = '';
-		for (var name in connecting) {
+		for (var name in connecting) {console.log(name) 
 			var watchedStr = !!watched[name] ? "watched" : "";
 			temp += '<div class="friends clearfix ' + watchedStr + '">\
 	    			<div class="name_wrap">\
@@ -156,7 +156,7 @@ document.addEventListener("plusready", function() {
 
 
 		// 加载person数据
-		if (person) {
+		if (person && person!="null") {
 			$(".title").html(person);
 			$("#chat_body").html(item.get("_$_" + person) || "");
 		}
@@ -339,14 +339,20 @@ document.addEventListener("plusready", function() {
 					} else if (mess.type == 3) {
 						var temp = '<div class="chat_row imgBox">' + '<div class="porel">' + '<span class="date">' + mess.time + '</span>' + '<span class="head_img">' + '<img src="' + userPhotoes[mess.from] + '" width="100%" height="100%" alt="own head image"/>' + '</span>' + '<span class="chat_content_img">' + '<div style="position: relative;">' + '<i class="arrow_img"></i>' + '<span class="send_image">' + '<img src="' + mess.content + '" width="100%" height="100%" alt="send"/>' + '</span>' + '</div>' + '</span>' + '</div>' + '</div>'
 					}
-
+					
+					connecting[mess.from] = {
+						src: userPhotoes[mess.from],
+						note: "新消息"
+					}
 					// 保存数据
+					watched[mess.from] = false;
 					saveMessage(mess.from, temp, true);
 				})
 
 				// 渲染UI
 				renderUI();
-				getMessage()
+				addUserInfo();
+				getMessage();
 			}
 		}
 
