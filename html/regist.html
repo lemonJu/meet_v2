@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="../css/fontawesome/css/font-awesome.css" />
 		<title>RIGIST</title>
 	</head>
+
 	<body>
 		<header class="bar-header">
 			<div class="back"><i class="fa fa-chevron-left"></i>
@@ -26,36 +27,37 @@
 					</div>
 				</div>
 			</div>
+			<div class="wait">注册中...</div>
 			<div class="info_input">
 				<div id="wrap">
 					<div class="name_user clearfix">
-					<div class="name clearfix">
-						<input type="text" placeholder="昵称" class="nicknamei" />
+						<div class="name clearfix">
+							<input type="text" placeholder="昵称" class="nicknamei" />
+						</div>
+					</div>
+					<div class="sex">
+						<input type="text" placeholder="性别" class="genderi" />
+					</div>
+					<div class="e-mail">
+						<input type="text" placeholder="年龄" class="maili" />
+					</div>
+					<div class="pass">
+						<input type="password" placeholder="密码" class="pswi" />
+					</div>
+					<div class="pass_sure">
+						<input type="text" placeholder="生日" class="s_psw_i" />
+					</div>
+					<div class="tel">
+						<input placeholder="个人描述" class="pd"></input>
 					</div>
 				</div>
-				<div class="sex">
-					<input type="text" placeholder="性别" class="genderi" />
-				</div>
-				<div class="e-mail">
-					<input type="text" placeholder="年龄" class="maili" />
-				</div>
-				<div class="pass">
-					<input type="password" placeholder="密码" class="pswi" />
-				</div>
-				<div class="pass_sure">
-					<input type="text" placeholder="生日" class="s_psw_i" />
-				</div>
-				<div class="tel">
-					<input placeholder="个人描述" class="pd"></input>
-				</div>
 			</div>
-				</div>
 		</article>
 		<footer class="bar-footer"><a class="logup">确认注册</a>
 		</footer>
 		<script src="../js/jquery.js"></script>
 		<script src="../js/base.js"></script>
-		<script src="../js/iscroll.js" ></script>
+		<script src="../js/iscroll.js"></script>
 		<script src="../js/common.js"></script>
 		<script>
 			var w = null;
@@ -75,21 +77,34 @@
 			}
 			$(function(){
 				var url = REMOTEURL + "/getRegisterImg?uid="+item.get('uid');
-				ajax(url,null,function(e){
+				if(item.get('uid')!=null){
+					ajax(url,null,function(e){
 					console.log(e)
-//							var path = plus.io.convertLocalFileSystemURL(xhr.responseText)
 							$('#img').attr('src',e)
 							var w = $('.pic_border').width();
 							var h = $('.pic_border').height();
 							$('#img').width(w);
 							$('#img').height(h);
-				},null,'GET')
+					},null,'GET')
+				}
 				
 			})
 			function plusReady() {
-				$('.logup').tap(function() {
+				
+				$('.logup').click(function() {
+					var a = true;
 					var xhr = null;
-					xhrCreate();
+					console.log($('#img').attr('src'))
+					if($('#img').attr('src')=='../img/camera.png'){
+						
+						if(a){
+							alert('请先上传图片！');
+							a = false;
+						}
+						return false;
+					}else{	
+						xhrCreate();
+					}
 				})
 				$('.back').tap(function() {
 					back();
@@ -99,12 +114,14 @@
 				})
 			}
 			function xhrCreate() {
+				$('.wait').show()
 				var data = "photo=" + $('.une').val() + "&nickname=" + $('.nicknamei').val() + "&gender=" + $('.genderi').val() + "&password=" + $('.pswi').val() + "&age=" + $('.maili').val() + "&birthday=" + $('.maili').val() + "&pdescription=" + $('.pd').val()+"&uid="+item.get('uid');
 				console.log(item.get('uid'))
 				var url = REMOTEURL + "/logup";
 				xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4 && xhr.status == 200) {
+						$('.wait').hide();
 						clicked('login.html')
 					}
 				}

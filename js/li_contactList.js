@@ -111,24 +111,24 @@ document.addEventListener("plusready", function() {
 		var temp = '';
 		for (var name in connecting) {console.log(name) 
 			var watchedStr = !!watched[name] ? "watched" : "";
-			temp += '<div class="friends clearfix ' + watchedStr + '">\
-	    			<div class="name_wrap">\
-	    				<div class="name_box">\
-		    				<div class="name">' + name + '</div>\
-		    				<div class="qianming">' + connecting[name].note + '</div>\
-		    			</div>\
-	    			</div>\
-	    			<div class="head_imgbox">\
-	    				<div class="imgbox_inner">\
-	    					<img src="' + connecting[name].src + '" width="100%" height="100%"/>\
-	    				</div>\
-	    				<div class="tips-message">...</div>\
-	    			</div>\
-	    			<div class="turn_left">\
-	    				<i style="line-height: 60px;font-size:1.6em;" class="fa fa-chevron-right"></i>\
-	    			</div>\
-	    			<div class="del">删除</div>\
-	    		</div>';
+			temp += '<div class="friends clearfix ' + watchedStr + '">'
+	    		+'<div class="name_wrap">'
+	    				+'<div class="name_box">'
+		    				+'<div class="name">' + name + '</div>'
+		    				+'<div class="qianming">' + connecting[name].note + '</div>'
+		    			+'</div>'
+	    			+'</div>'
+	    			+'<div class="head_imgbox">' 
+	    				+'<div class="imgbox_inner">'
+	    					+'<img src="' + connecting[name].src + '" width="100%" height="100%"/>'
+	    				+'</div>'
+	    				+'<div class="tips-message">...</div>'
+	    			+'</div>'
+	    			+'<div class="turn_left">'
+	    				+'<i style="line-height: 60px;font-size:1.6em;" class="fa fa-chevron-right"></i>'
+	    			+'</div>'
+	    			+'<div class="del">删除</div>'
+	    		+'</div>';
 		}
 
 		$("#chat_box").html(temp);
